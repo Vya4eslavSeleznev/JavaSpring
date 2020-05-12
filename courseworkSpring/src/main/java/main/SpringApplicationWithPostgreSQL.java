@@ -1,7 +1,7 @@
 package main;
 
-import main.entity.Application;
-import main.repository.ApplicationRepository;
+import main.entity.Operation;
+import main.repository.OperationRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -18,14 +18,14 @@ public class SpringApplicationWithPostgreSQL
   }
 
   @Bean
-  public CommandLineRunner test(ApplicationRepository repository)
+  public CommandLineRunner test(OperationRepository repository)
   {
     return args ->
     {
-      repository.save(new Application("FirstApp", "My first app"));
-      repository.save(new Application("SecondApp", "My second app"));
+      repository.save(new Operation(1, 2, 3, 4, "123", 6));
+      repository.save(new Operation(11, 22, 33, 44, "112233", 66));
 
-      for (Application app : repository.findAll())
+      for (Operation app : repository.findAll())
       {
         log.info("The application is: " + app.toString());
       }
