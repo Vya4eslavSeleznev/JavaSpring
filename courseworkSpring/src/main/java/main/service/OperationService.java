@@ -4,6 +4,6 @@ import main.entity.Operation;
 
 public interface OperationService
 {
-  Operation findOperation(long id);
+  Operation findOperation(int id);
   Operation addOperation(Operation operation);
 }

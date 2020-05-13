@@ -12,7 +12,7 @@ import java.util.Optional;
 public class OperationServiceImpl implements OperationService
 {
   @Override
-  public Operation findOperation(long id)
+  public Operation findOperation(int id)
   {
     Optional<Operation> optionalApp = operationRepository.findById(id);
 

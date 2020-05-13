@@ -89,10 +89,12 @@ public class Operation
   @ManyToOne
   private Article article;
 
+  @Column(name = "article_id", insertable = false, updatable = false)
   private int articleId;
   private double debit;
   private double credit;
   private String createDate;
+  @Column(name = "balance_id", insertable = false, updatable = false)
   private int balanceId;
 }
 

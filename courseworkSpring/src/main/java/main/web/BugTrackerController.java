@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 @RestController
-@RequestMapping ("/bt")
 public class BugTrackerController
 {
   @Autowired
@@ -19,8 +18,8 @@ public class BugTrackerController
     this.operationService = operationService;
   }
 
-  @GetMapping ("/operation/(id)")
-  public ResponseEntity<Operation> getApplication(@PathVariable ("id") long id)
+  @GetMapping ("/operation/{id}")
+  public ResponseEntity<Operation> getOperation(@PathVariable ("id") int id) throws Exception
   {
     try
     {

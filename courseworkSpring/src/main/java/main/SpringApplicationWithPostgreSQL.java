@@ -22,13 +22,20 @@ public class SpringApplicationWithPostgreSQL
   {
     return args ->
     {
-      repository.save(new Operation(1, 2, 3, 4, "123", 6));
-      repository.save(new Operation(11, 22, 33, 44, "112233", 66));
+      Iterable<Operation> temp = repository.findAll();
 
-      for (Operation app : repository.findAll())
+      for (Operation temp2 : temp)
       {
-        log.info("The application is: " + app.toString());
+        log.info("The application is: " + temp2.getId());
       }
+
+      //repository.save(new Operation(1, 2, 3, 4, "123", 6));
+      //repository.save(new Operation(11, 22, 33, 44, "112233", 66));
+
+      //or (Operation app : repository.findAll())
+      //{
+      //  log.info("The application is: " + app.toString());
+      //}
     };
   }
 
