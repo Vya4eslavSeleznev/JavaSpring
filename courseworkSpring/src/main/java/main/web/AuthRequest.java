@@ -4,6 +4,9 @@ import java.io.Serializable;
 
 public class AuthRequest implements Serializable
 {
+  private String userName;
+  private String password;
+
   public AuthRequest(String userName, String password)
   {
     this.userName = userName;
@@ -29,7 +32,4 @@ public class AuthRequest implements Serializable
   {
     this.password = password;
   }
-
-  private String userName;
-  private String password;
 }

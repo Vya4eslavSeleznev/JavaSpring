@@ -11,7 +11,7 @@ import java.util.List;
 public class BalanceServiceImpl implements BalanceService
 {
   @Override
-  public List< Balance > getAll()
+  public List<Balance> getAll()
   {
     return (List<Balance>) balanceRepository.findAll();
   }

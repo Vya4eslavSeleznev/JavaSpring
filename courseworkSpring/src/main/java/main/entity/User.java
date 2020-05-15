@@ -14,6 +14,18 @@ import java.util.stream.Collectors;
 @Table(name = "usr")
 public class User implements UserDetails
 {
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private int id;
+
+  @Column(nullable = false, unique = true)
+  private String userName;
+
+  private String password;
+
+  @ElementCollection(fetch = FetchType.EAGER)
+  private List<String> roles = new ArrayList<>();
+
   public User()
   {
   }
@@ -71,16 +83,4 @@ public class User implements UserDetails
   {
     return true;
   }
-
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private int id;
-
-  @Column(nullable = false, unique = true)
-  private String userName;
-
-  private String password;
-
-  @ElementCollection(fetch = FetchType.EAGER)
-  private List<String> roles = new ArrayList<>();
 }

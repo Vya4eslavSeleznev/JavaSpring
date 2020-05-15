@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface BalanceService
 {
-  List< Balance > getAll();
+  List<Balance> getAll();
 }

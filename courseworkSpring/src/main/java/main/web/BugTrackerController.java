@@ -12,6 +12,8 @@ import org.springframework.web.server.ResponseStatusException;
 @RestController
 public class BugTrackerController
 {
+  private OperationService operationService;
+
   @Autowired
   public void setOperationService (OperationService operationService)
   {
@@ -36,6 +38,4 @@ public class BugTrackerController
   {
     return operationService.addOperation(newOperation);
   }
-
-  private OperationService operationService;
 }

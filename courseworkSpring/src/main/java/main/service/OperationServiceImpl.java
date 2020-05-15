@@ -11,6 +11,9 @@ import java.util.Optional;
 @Service
 public class OperationServiceImpl implements OperationService
 {
+  @Autowired
+  private OperationRepository operationRepository;
+
   @Override
   public Operation findOperation(int id)
   {
@@ -31,7 +34,4 @@ public class OperationServiceImpl implements OperationService
   {
     return operationRepository.save(operation);
   }
-
-  @Autowired
-  private OperationRepository operationRepository;
 }

@@ -5,6 +5,13 @@ import javax.persistence.*;
 @Entity
 public class Article
 {
+  @Id
+  @GeneratedValue (strategy = GenerationType.AUTO)
+  private int id;
+
+  @Column (nullable = false)
+  private String name;
+
   public Article ()
   {
   }
@@ -34,11 +41,4 @@ public class Article
   {
     this.name = name;
   }
-
-  @Id
-  @GeneratedValue (strategy = GenerationType.AUTO)
-  private int id;
-
-  @Column (nullable = false)
-  private String name;
 }

@@ -8,6 +8,15 @@ import javax.persistence.Id;
 @Entity
 public class Balance
 {
+  @Id
+  @GeneratedValue (strategy = GenerationType.AUTO)
+  private int id;
+
+  private String createDate;
+  private double debit;
+  private double credit;
+  private double amount;
+
   public Balance ()
   {
   }
@@ -70,13 +79,4 @@ public class Balance
   {
     this.amount = amount;
   }
-
-  @Id
-  @GeneratedValue (strategy = GenerationType.AUTO)
-  private int id;
-
-  private String createDate;
-  private double debit;
-  private double credit;
-  private double amount;
 }

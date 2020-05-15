@@ -18,6 +18,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter
 {
+  @Autowired
+  private JwtTokenProvider jwtTokenProvider;
+
   @Bean
   @Override
   public AuthenticationManager authenticationManagerBean() throws Exception
@@ -48,7 +51,4 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter
       .and()
       .apply(new JwtSecurityConfigurer(jwtTokenProvider));
   }
-
-  @Autowired
-  private JwtTokenProvider jwtTokenProvider;
 }

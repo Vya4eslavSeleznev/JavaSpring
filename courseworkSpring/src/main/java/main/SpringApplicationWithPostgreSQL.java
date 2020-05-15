@@ -13,6 +13,8 @@ import org.springframework.context.annotation.Bean;
 @SpringBootApplication
 public class SpringApplicationWithPostgreSQL
 {
+  private static final Logger log = LoggerFactory.getLogger(SpringApplicationWithPostgreSQL.class);
+
   public static void main (String[] args)
   {
     SpringApplication.run(SpringApplicationWithPostgreSQL.class, args);
@@ -39,6 +41,4 @@ public class SpringApplicationWithPostgreSQL
       //}
     };
   }
-
-  private static final Logger log = LoggerFactory.getLogger(SpringApplicationWithPostgreSQL.class);
 }

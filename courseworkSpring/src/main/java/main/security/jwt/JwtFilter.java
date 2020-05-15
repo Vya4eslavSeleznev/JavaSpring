@@ -14,6 +14,8 @@ import java.io.IOException;
 
 public class JwtFilter extends GenericFilterBean
 {
+  private JwtTokenProvider jwtTokenProvider;
+
   public JwtFilter(JwtTokenProvider jwtTokenProvider)
   {
     this.jwtTokenProvider = jwtTokenProvider;
@@ -37,6 +39,4 @@ public class JwtFilter extends GenericFilterBean
 
     filterChain.doFilter(servletRequest, servletResponse);
   }
-
-  private JwtTokenProvider jwtTokenProvider;
 }

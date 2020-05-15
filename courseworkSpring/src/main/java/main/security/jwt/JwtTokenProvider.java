@@ -19,6 +19,15 @@ import java.util.List;
 @Component
 public class JwtTokenProvider
 {
+  @Autowired
+  private JwtProperties jwtProperties;
+
+  @Qualifier("customUserDetailsService")
+  @Autowired
+  private UserDetailsService userDetailsService;
+
+  private String secretKey;
+
   public String createToken(String userName, List<String> roles)
   {
     Claims claims = Jwts.claims().setSubject(userName);
@@ -72,15 +81,6 @@ public class JwtTokenProvider
 
     return new UsernamePasswordAuthenticationToken(userDetails, "", userDetails.getAuthorities());
   }
-
-  @Autowired
-  private JwtProperties jwtProperties;
-
-  @Qualifier("customUserDetailsService")
-  @Autowired
-  private UserDetailsService userDetailsService;
-
-  private String secretKey;
 
   @PostConstruct
   private void init()

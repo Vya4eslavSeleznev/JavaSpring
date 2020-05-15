@@ -5,6 +5,24 @@ import javax.persistence.*;
 @Entity
 public class Operation
 {
+  @Id
+  @GeneratedValue (strategy = GenerationType.AUTO)
+  private int id;
+
+  @ManyToOne
+  private Balance balance;
+
+  @ManyToOne
+  private Article article;
+
+  @Column(name = "article_id", insertable = false, updatable = false)
+  private int articleId;
+  private double debit;
+  private double credit;
+  private String createDate;
+  @Column(name = "balance_id", insertable = false, updatable = false)
+  private int balanceId;
+
   public Operation ()
   {
   }
@@ -78,24 +96,6 @@ public class Operation
   {
     this.balanceId = balanceId;
   }
-
-  @Id
-  @GeneratedValue (strategy = GenerationType.AUTO)
-  private int id;
-
-  @ManyToOne
-  private Balance balance;
-
-  @ManyToOne
-  private Article article;
-
-  @Column(name = "article_id", insertable = false, updatable = false)
-  private int articleId;
-  private double debit;
-  private double credit;
-  private String createDate;
-  @Column(name = "balance_id", insertable = false, updatable = false)
-  private int balanceId;
 }
 
 //Привязать поля к базе данных с помощью hibernate getmapping
