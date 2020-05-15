@@ -1,18 +1,18 @@
 package main.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 public class Balance
 {
   @Id
-  @GeneratedValue (strategy = GenerationType.AUTO)
+  @GeneratedValue (strategy = GenerationType.IDENTITY)
   private int id;
 
-  private String createDate;
+  @Column (name = "create_date")
+  private Date createDate;
+
   private double debit;
   private double credit;
   private double amount;
@@ -21,9 +21,8 @@ public class Balance
   {
   }
 
-  public Balance (int id, String createDate, double debit, double credit, double amount)
+  public Balance(Date createDate, double debit, double credit, double amount)
   {
-    this.id = id;
     this.createDate = createDate;
     this.debit = debit;
     this.credit = credit;
@@ -40,12 +39,12 @@ public class Balance
     this.id = id;
   }
 
-  public String getCreateDate ()
+  public Date getCreateDate ()
   {
     return createDate;
   }
 
-  public void setCreateDate (String createDate)
+  public void setCreateDate (Date createDate)
   {
     this.createDate = createDate;
   }

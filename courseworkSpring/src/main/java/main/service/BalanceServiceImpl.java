@@ -5,15 +5,19 @@ import main.repository.BalanceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 public class BalanceServiceImpl implements BalanceService
 {
   @Override
-  public List<Balance> getAll()
+  public void addBalance(Balance balance)
   {
-    return (List<Balance>) balanceRepository.findAll();
+    balanceRepository.save(balance);
+  }
+
+  @Override
+  public void deleteBalance(int id)
+  {
+    balanceRepository.deleteById(id);
   }
 
   @Autowired

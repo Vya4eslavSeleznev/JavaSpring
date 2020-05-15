@@ -1,12 +1,13 @@
 package main.entity;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 public class Operation
 {
   @Id
-  @GeneratedValue (strategy = GenerationType.AUTO)
+  @GeneratedValue (strategy = GenerationType.IDENTITY)
   private int id;
 
   @ManyToOne
@@ -17,9 +18,11 @@ public class Operation
 
   @Column(name = "article_id", insertable = false, updatable = false)
   private int articleId;
+
   private double debit;
   private double credit;
-  private String createDate;
+  private Date createDate;
+
   @Column(name = "balance_id", insertable = false, updatable = false)
   private int balanceId;
 
@@ -27,7 +30,7 @@ public class Operation
   {
   }
 
-  public Operation (int id, int articleId, double debit, double credit, String createDate, int balanceId)
+  public Operation (int id, int articleId, double debit, double credit, Date createDate, int balanceId)
   {
     this.id = id;
     this.articleId = articleId;
@@ -77,12 +80,12 @@ public class Operation
     this.credit = credit;
   }
 
-  public String getCreateDate ()
+  public Date getCreateDate ()
   {
     return createDate;
   }
 
-  public void setCreateDate (String createDate)
+  public void setCreateDate (Date createDate)
   {
     this.createDate = createDate;
   }
