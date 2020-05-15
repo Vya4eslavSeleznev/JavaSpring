@@ -8,6 +8,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class BalanceServiceImpl implements BalanceService
 {
+  @Autowired
+  private BalanceRepository balanceRepository;
+
   @Override
   public void addBalance(Balance balance)
   {
@@ -19,7 +22,4 @@ public class BalanceServiceImpl implements BalanceService
   {
     balanceRepository.deleteById(id);
   }
-
-  @Autowired
-  private BalanceRepository balanceRepository;
 }

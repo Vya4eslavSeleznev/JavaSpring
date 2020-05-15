@@ -30,9 +30,8 @@ public class Operation
   {
   }
 
-  public Operation (int id, int articleId, double debit, double credit, Date createDate, int balanceId)
+  public Operation (int articleId, double debit, double credit, Date createDate, int balanceId)
   {
-    this.id = id;
     this.articleId = articleId;
     this.debit = debit;
     this.credit = credit;
