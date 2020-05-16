@@ -1,9 +1,10 @@
 package main.service;
 
 import main.entity.Operation;
+import main.model.OperationCreateModel;
 
 public interface OperationService
 {
-  void addOperation(Operation operation);
+  void addOperation(OperationCreateModel operationModel);
   void deleteOperation(int id);
 }

@@ -30,13 +30,14 @@ public class Operation
   {
   }
 
-  public Operation (int articleId, double debit, double credit, Date createDate, int balanceId)
+  public Operation (Article article, Balance balance, double debit,
+                    double credit, Date createDate)
   {
-    this.articleId = articleId;
     this.debit = debit;
     this.credit = credit;
     this.createDate = createDate;
-    this.balanceId = balanceId;
+    this.article = article;
+    this.balance = balance;
   }
 
   public int getId ()
