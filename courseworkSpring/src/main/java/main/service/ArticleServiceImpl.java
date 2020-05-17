@@ -2,12 +2,20 @@ package main.service;
 
 import main.entity.Article;
 import main.entity.Balance;
+import main.entity.Operation;
 import main.exception.ArticleNotFoundException;
 import main.exception.BalanceNotFoundException;
+import main.exception.OperationNotFoundException;
 import main.repository.ArticleRepository;
+import main.repository.OperationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.criteria.*;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,6 +24,12 @@ public class ArticleServiceImpl implements ArticleService
 {
   @Autowired
   private ArticleRepository articleRepository;
+
+  @Autowired
+  private OperationRepository operationRepository;
+
+  @PersistenceContext
+  private EntityManager entityManager;
 
   @Override
   public void addArticle(Article article)
@@ -38,5 +52,23 @@ public class ArticleServiceImpl implements ArticleService
   public List<Article> listArticles()
   {
     return (List<Article>) articleRepository.findAll();
+  }
+
+  @Override
+  public List<Operation> getCreditForCategory(int id)
+  {
+    CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+    CriteriaQuery<Operation> query = cb.createQuery(Operation.class);
+    Root<Operation> operation = query.from(Operation.class);
+    query.select(operation);
+
+    Path<Integer> articleId = operation.get("articleId");
+    ArrayList<Predicate> predicates = new ArrayList<Predicate>();
+
+    predicates.add(cb.greaterThan(articleId, id));
+    query.where(cb.and(predicates.toArray(new Predicate[predicates.size()])));
+
+    return entityManager.createQuery(query)
+      .getResultList();
   }
 }

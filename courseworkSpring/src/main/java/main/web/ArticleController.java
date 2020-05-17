@@ -1,9 +1,13 @@
 package main.web;
 
 import main.entity.Article;
+import main.entity.Balance;
+import main.entity.Operation;
 import main.exception.ArticleNotFoundException;
 import main.model.ArticleCreateModel;
+import main.model.FilterModel;
 import main.service.ArticleService;
+import main.service.OperationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,11 +21,18 @@ import java.util.List;
 public class ArticleController
 {
   private ArticleService articleService;
+  private OperationService operationService;
 
   @Autowired
   public void setArticleService (ArticleService articleService)
   {
     this.articleService = articleService;
+  }
+
+  @Autowired
+  public void setOperationService (OperationService operationService)
+  {
+    this.operationService = operationService;
   }
 
   @PostMapping
@@ -44,10 +55,17 @@ public class ArticleController
     }
   }
 
-  @GetMapping()
+  @GetMapping("/all")
   public ResponseEntity<List<Article>> getAllArticles()
   {
     List<Article> list = articleService.listArticles();
+    return new ResponseEntity<>(list, HttpStatus.OK);
+  }
+
+  @GetMapping("{id}")
+  public ResponseEntity<List<Operation>> getCreditForCategory(@PathVariable("id") int id)
+  {
+    List<Operation> list = articleService.getCreditForCategory(id);
     return new ResponseEntity<>(list, HttpStatus.OK);
   }
 }
