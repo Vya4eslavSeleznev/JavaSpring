@@ -16,9 +16,8 @@ public class Article
   {
   }
 
-  public Article (int id, String name)
+  public Article (String name)
   {
-    this.id = id;
     this.name = name;
   }
 

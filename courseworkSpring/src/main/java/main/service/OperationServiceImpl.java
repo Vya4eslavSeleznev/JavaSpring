@@ -3,17 +3,15 @@ package main.service;
 import main.entity.Article;
 import main.entity.Balance;
 import main.entity.Operation;
-import main.exception.BalanceNotFoundException;
 import main.exception.OperationNotFoundException;
 import main.model.OperationCreateModel;
 import main.repository.ArticleRepository;
 import main.repository.BalanceRepository;
 import main.repository.OperationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -45,8 +43,14 @@ public class OperationServiceImpl implements OperationService
     Optional<Operation> operation = operationRepository.findById(id);
 
     if (!operation.isPresent())
-      throw new BalanceNotFoundException("");
+      throw new OperationNotFoundException("Operation not found");
 
     operationRepository.delete(operation.get());
   }
+
+  /*@Override
+  public List<Operation> listOperations()
+  {
+    return (List<Operation>) operationRepository.findAll();
+  }*/
 }

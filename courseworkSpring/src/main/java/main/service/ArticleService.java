@@ -6,5 +6,7 @@ import java.util.List;
 
 public interface ArticleService
 {
-  List<Article> getAllArticle();
+  void addArticle(Article article);
+  void deleteArticle(int id);
+  List<Article> listArticles();
 }
