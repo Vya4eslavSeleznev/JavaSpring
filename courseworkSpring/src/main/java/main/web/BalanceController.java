@@ -52,12 +52,12 @@ public class BalanceController
   }
 
   @GetMapping()
-  public ResponseEntity<List<Balance>> getBalanceForPeriod(@RequestParam @DateTimeFormat(pattern="yyyy-MM-dd") Optional<Date> from,
+  public ResponseEntity<List<Balance>> getBalanceWithFilter(@RequestParam @DateTimeFormat(pattern="yyyy-MM-dd") Optional<Date> from,
                                                            @RequestParam @DateTimeFormat(pattern="yyyy-MM-dd") Optional<Date> to)
   {
     FilterModel filter = new FilterModel(to, from);
 
-    List<Balance> list = balanceService.getBalanceForPeriod(filter);
+    List<Balance> list = balanceService.getBalanceWithFilter(filter);
     return new ResponseEntity<>(list, HttpStatus.OK);
   }
 }

@@ -36,7 +36,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter
   @Override
   protected void configure(HttpSecurity http) throws Exception
   {
-    /*http.httpBasic().disable()
+    http.httpBasic().disable()
       .csrf().disable()
       .formLogin().disable()
       .sessionManagement()
@@ -44,11 +44,8 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter
       .and()
       .authorizeRequests()
       .antMatchers("/auth/signin").permitAll()
-      //.antMatchers(HttpMethod.GET, "/bt/application{id}").hasRole("USER")
-      //.antMatchers(HttpMethod.POST, "/bt/addApplication").hasRole("ADMIN")
-      //.antMatchers(HttpMethod.GET, "/bt/applications").permitAll()
-      //.anyRequest().authenticated()
+      .anyRequest().authenticated()
       .and()
-      .apply(new JwtSecurityConfigurer(jwtTokenProvider));*/
+      .apply(new JwtSecurityConfigurer(jwtTokenProvider));
   }
 }

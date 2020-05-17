@@ -1,16 +1,21 @@
 package main.web;
 
+import main.entity.Balance;
 import main.entity.Operation;
 import main.exception.OperationNotFoundException;
+import main.model.FilterModel;
 import main.model.OperationCreateModel;
 import main.service.OperationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/operation")
@@ -43,10 +48,14 @@ public class OperationController
     }
   }
 
-  /*@GetMapping()
-  public ResponseEntity<List<Operation>> getAllBalances()
+  @GetMapping()
+  public ResponseEntity<List<Operation>> getOperationWithFilter(
+      @RequestParam @DateTimeFormat (pattern="yyyy-MM-dd") Optional< Date > from,
+      @RequestParam @DateTimeFormat(pattern="yyyy-MM-dd") Optional<Date> to)
   {
-    List<Operation> list = operationService.listOperations();
+    FilterModel filter = new FilterModel(to, from);
+
+    List<Operation> list = operationService.getOperationWithFilter(filter);
     return new ResponseEntity<>(list, HttpStatus.OK);
-  }*/
+  }
 }

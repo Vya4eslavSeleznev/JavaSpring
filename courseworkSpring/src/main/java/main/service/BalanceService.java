@@ -9,6 +9,5 @@ public interface BalanceService
 {
   void addBalance(Balance balance);
   void deleteBalance(int id);
-  List<Balance> getBalanceForPeriod(FilterModel filter);
-  List<Balance> listBalances();
+  List<Balance> getBalanceWithFilter(FilterModel filter);
 }

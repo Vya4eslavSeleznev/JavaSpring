@@ -42,7 +42,7 @@ public class BalanceServiceImpl implements BalanceService
   }
 
   @Override
-  public List<Balance> getBalanceForPeriod(FilterModel filter)
+  public List<Balance> getBalanceWithFilter(FilterModel filter)
   {
     CriteriaBuilder cb = entityManager.getCriteriaBuilder();
     CriteriaQuery<Balance> query = cb.createQuery(Balance.class);
@@ -71,11 +71,5 @@ public class BalanceServiceImpl implements BalanceService
 
     return entityManager.createQuery(query)
       .getResultList();
-  }
-
-  @Override
-  public List<Balance> listBalances()
-  {
-    return (List<Balance>) balanceRepository.findAll();
   }
 }

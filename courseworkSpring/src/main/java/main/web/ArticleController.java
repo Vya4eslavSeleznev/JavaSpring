@@ -32,7 +32,7 @@ public class ArticleController
   }
 
   @DeleteMapping ("{id}")
-  public void deleteArticle(int id)
+  public void deleteArticle(@PathVariable("id") int id)
   {
     try
     {
@@ -45,7 +45,7 @@ public class ArticleController
   }
 
   @GetMapping()
-  public ResponseEntity<List<Article>> getAllTickets()
+  public ResponseEntity<List<Article>> getAllArticles()
   {
     List<Article> list = articleService.listArticles();
     return new ResponseEntity<>(list, HttpStatus.OK);
