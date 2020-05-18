@@ -5,34 +5,60 @@ import javax.swing.*;
 public class Menu
 {
   private JPanel rootPanel;
+
   private JTabbedPane mainTabbedPane;
   private JTabbedPane articleTabbedPane;
   private JTabbedPane balanceTabbedPane;
   private JTabbedPane operationTabbedPane;
+
   private JButton deleteArticleButton;
-  private JTextField deleteArticleTextField;
-  private JTable deleteArticleTable;
-  private JTable showAllArticleTable;
   private JButton addArticleButton;
-  private JTextField addArticleTextField;
-  private JTable addArticleTable;
-  private JButton filterArticleButton;
-  private JTextField filterArticleTextField;
-  private JTable table1;
-  private JScrollPane filterArticleTable;
+  private JButton articleFilterButton;
   private JButton addBalanceButton;
+  private JButton deleteBalanceButton;
+  private JButton balanceFilterButton;
+  private JButton addOperationButton;
+  private JButton deleteOperationButton;
+  private JButton operationFilterButton;
+
+  private JTextField deleteArticleTextField;
+  private JTextField addArticleTextField;
+  private JTextField filterArticleTextField;
   private JTextField addBalanceDateTextField;
   private JTextField addBalanceDebitTextField;
   private JTextField addBalanceCreditTextField;
-  private JTable addBalanceTable;
-  private JButton deleteBalanceButton;
   private JTextField deleteBalanceTextField;
-  private JTable deleteBalanceTable;
-  private JTable showAllBalanceTable;
-  private JButton filterBalanceButton;
   private JTextField filterBalanceFromTextField;
   private JTextField filterBalanceToTextField;
+  private JTextField addOperationDateTextField;
+  private JTextField addOperationArtIdTextField;
+  private JTextField addOperationBalIdTextField;
+  private JTextField addOperationDebitTextField;
+  private JTextField addOperationCreditTextField;
+  private JTextField deleteOperationTextField;
+  private JTextField operationFilterDateFromTextField;
+  private JTextField operationFilterDateToTextField;
+
+  private JTable deleteArticleTable;
+  private JTable showAllArticleTable;
+  private JTable addArticleTable;
+  private JTable filterArticleTable;
+  private JTable addBalanceTable;
+  private JTable deleteBalanceTable;
+  private JTable showAllBalanceTable;
   private JTable filterBalanceTable;
+  private JTable addOperationTable;
+  private JTable deleteOperationTable;
+  private JTable showAllOperationTable;
+  private JTable operationFilterTable;
+
+  private JLabel errorArticleFilterLabel;
+  private JLabel errorDeleteArticleLabel;
+  private JLabel errorAddBalanceLabel;
+  private JLabel errorDeleteBalanceLabel;
+  private JLabel errorBalanceFilterLabel;
+  private JLabel errorAddOperationLabel;
+  private JLabel errorOperationFilterLabel;
 
   public Menu()
   {
