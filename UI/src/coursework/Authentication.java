@@ -34,6 +34,7 @@ public class Authentication
       public void actionPerformed(ActionEvent e)
       {
         errorLabel.setText("test");
+        //Menu menu = new Menu(frame1);
       }
     });
   }
