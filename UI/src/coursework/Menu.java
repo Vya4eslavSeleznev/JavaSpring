@@ -9,6 +9,17 @@ public class Menu
   private JTabbedPane articleTabbedPane;
   private JTabbedPane balanceTabbedPane;
   private JTabbedPane operationTabbedPane;
+  private JButton deleteArticleButton;
+  private JTextField deleteArticleTextField;
+  private JTable deleteArticleTable;
+  private JTable showAllArticleTable;
+  private JButton addArticleButton;
+  private JTextField addArticleTextField;
+  private JTable addArticleTable;
+  private JButton filterArticlebutton;
+  private JTextField filterArticleTextField;
+  private JTable table1;
+  private JScrollPane filterArticleTable;
 
   public Menu()
   {
