@@ -16,10 +16,23 @@ public class Menu
   private JButton addArticleButton;
   private JTextField addArticleTextField;
   private JTable addArticleTable;
-  private JButton filterArticlebutton;
+  private JButton filterArticleButton;
   private JTextField filterArticleTextField;
   private JTable table1;
   private JScrollPane filterArticleTable;
+  private JButton addBalanceButton;
+  private JTextField addBalanceDateTextField;
+  private JTextField addBalanceDebitTextField;
+  private JTextField addBalanceCreditTextField;
+  private JTable addBalanceTable;
+  private JButton deleteBalanceButton;
+  private JTextField deleteBalanceTextField;
+  private JTable deleteBalanceTable;
+  private JTable showAllBalanceTable;
+  private JButton filterBalanceButton;
+  private JTextField filterBalanceFromTextField;
+  private JTextField filterBalanceToTextField;
+  private JTable filterBalanceTable;
 
   public Menu()
   {
