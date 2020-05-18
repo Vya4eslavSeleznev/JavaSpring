@@ -42,6 +42,12 @@ public class BalanceServiceImpl implements BalanceService
   }
 
   @Override
+  public List<Balance> listBalances()
+  {
+    return (List<Balance>) balanceRepository.findAll();
+  }
+
+  @Override
   public List<Balance> getBalanceWithFilter(FilterModel filter)
   {
     CriteriaBuilder cb = entityManager.getCriteriaBuilder();

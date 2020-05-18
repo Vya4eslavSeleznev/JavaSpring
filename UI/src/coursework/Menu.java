@@ -4,6 +4,12 @@ import javax.swing.*;
 
 public class Menu
 {
+  private JPanel rootPanel;
+  private JTabbedPane mainTabbedPane;
+  private JTabbedPane articleTabbedPane;
+  private JTabbedPane balanceTabbedPane;
+  private JTabbedPane operationTabbedPane;
+
   public Menu()
   {
     JFrame frame = new JFrame();
@@ -13,11 +19,11 @@ public class Menu
     frame.setSize(1000, 700);
     frame.setLocation(290, 50);
     frame.setVisible(true);
+
   }
 
-  private JPanel rootPanel;
-  private JButton articleButton;
-  private JButton balanceButton;
-  private JButton operationButton;
-  private JButton backButton;
+  public JPanel getPanel()
+  {
+    return this.rootPanel;
+  }
 }

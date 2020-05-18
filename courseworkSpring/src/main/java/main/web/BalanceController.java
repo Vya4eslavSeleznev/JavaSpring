@@ -1,6 +1,5 @@
 package main.web;
 
-import main.entity.Article;
 import main.entity.Balance;
 import main.exception.BalanceNotFoundException;
 import main.model.BalanceCreateModel;
@@ -49,6 +48,13 @@ public class BalanceController
     {
       throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Balance not found");
     }
+  }
+
+  @GetMapping()
+  public ResponseEntity<List<Balance>> getAllBalances()
+  {
+    List<Balance> list = balanceService.listBalances();
+    return new ResponseEntity<>(list, HttpStatus.OK);
   }
 
   @GetMapping()

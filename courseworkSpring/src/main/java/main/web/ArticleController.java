@@ -55,7 +55,7 @@ public class ArticleController
     }
   }
 
-  @GetMapping("/all")
+  @GetMapping()
   public ResponseEntity<List<Article>> getAllArticles()
   {
     List<Article> list = articleService.listArticles();

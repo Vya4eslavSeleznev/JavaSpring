@@ -10,5 +10,6 @@ public interface OperationService
 {
   void addOperation(OperationCreateModel operationModel);
   void deleteOperation(int id);
+  List<Operation> listOperations();
   List<Operation> getOperationWithFilter(FilterModel filter);
 }

@@ -1,6 +1,5 @@
 package main.web;
 
-import main.entity.Balance;
 import main.entity.Operation;
 import main.exception.OperationNotFoundException;
 import main.model.FilterModel;
@@ -46,6 +45,13 @@ public class OperationController
     {
       throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Operation not found");
     }
+  }
+
+  @GetMapping()
+  public ResponseEntity<List<Operation>> getAllOperations()
+  {
+    List<Operation> list = operationService.listOperations();
+    return new ResponseEntity<>(list, HttpStatus.OK);
   }
 
   @GetMapping()

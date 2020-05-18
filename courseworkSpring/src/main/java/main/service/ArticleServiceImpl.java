@@ -1,11 +1,8 @@
 package main.service;
 
 import main.entity.Article;
-import main.entity.Balance;
 import main.entity.Operation;
 import main.exception.ArticleNotFoundException;
-import main.exception.BalanceNotFoundException;
-import main.exception.OperationNotFoundException;
 import main.repository.ArticleRepository;
 import main.repository.OperationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +12,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.*;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 

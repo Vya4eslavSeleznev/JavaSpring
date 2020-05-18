@@ -58,6 +58,12 @@ public class OperationServiceImpl implements OperationService
   }
 
   @Override
+  public List<Operation> listOperations ()
+  {
+    return (List<Operation>) operationRepository.findAll();
+  }
+
+  @Override
   public List<Operation> getOperationWithFilter(FilterModel filter)
   {
     CriteriaBuilder cb = entityManager.getCriteriaBuilder();
