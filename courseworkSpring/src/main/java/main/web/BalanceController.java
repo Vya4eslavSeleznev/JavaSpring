@@ -50,7 +50,7 @@ public class BalanceController
     }
   }
 
-  @GetMapping()
+  @GetMapping("/all")
   public ResponseEntity<List<Balance>> getAllBalances()
   {
     List<Balance> list = balanceService.listBalances();

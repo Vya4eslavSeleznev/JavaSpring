@@ -59,10 +59,8 @@ public class ArticleServiceImpl implements ArticleService
     query.select(operation);
 
     Path<Integer> articleId = operation.get("articleId");
-    ArrayList<Predicate> predicates = new ArrayList<Predicate>();
 
-    predicates.add(cb.greaterThan(articleId, id));
-    query.where(cb.and(predicates.toArray(new Predicate[predicates.size()])));
+    query.where(cb.equal(articleId, id));
 
     return entityManager.createQuery(query)
       .getResultList();

@@ -47,7 +47,7 @@ public class OperationController
     }
   }
 
-  @GetMapping()
+  @GetMapping("/all")
   public ResponseEntity<List<Operation>> getAllOperations()
   {
     List<Operation> list = operationService.listOperations();
