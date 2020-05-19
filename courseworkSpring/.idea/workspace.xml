@@ -7,9 +7,8 @@
       <change beforePath="$PROJECT_DIR$/../UI/out/production/UI/coursework/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/../UI/out/production/UI/coursework/Menu.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../UI/src/coursework/Authentication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UI/src/coursework/Authentication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../UI/src/coursework/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UI/src/coursework/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UI/src/coursework/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UI/src/coursework/Menu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../UI/src/coursework/form/Authentication.form" beforeDir="false" afterPath="$PROJECT_DIR$/../UI/src/coursework/form/Authentication.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UI/src/coursework/form/Menu.form" beforeDir="false" afterPath="$PROJECT_DIR$/../UI/src/coursework/form/Menu.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -112,10 +111,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="398" height="466" key="DebuggerActiveHint/0.0.1536.824@0.0.1536.824" timestamp="1589732153100" />
-    <state x="933" y="167" key="FileChooserDialogImpl" timestamp="1589809634775">
+    <state x="933" y="167" key="FileChooserDialogImpl" timestamp="1589875699602">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="933" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1589809634775" />
+    <state x="933" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1589875699602" />
     <state width="1493" height="244" key="GridCell.Tab.0.bottom" timestamp="1589836833591">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -160,10 +159,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="490" y="154" width="540" height="524" key="StructurePopup/0.0.1536.824@0.0.1536.824" timestamp="1589653049565" />
-    <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1589809626338">
+    <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1589875693029">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1589809626338" />
+    <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1589875693029" />
     <state x="462" y="10" width="611" height="804" key="find.popup" timestamp="1589740129024">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

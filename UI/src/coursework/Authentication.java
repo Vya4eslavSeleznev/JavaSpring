@@ -8,8 +8,9 @@ public class Authentication
 {
   private JFrame frame1;
   private JPanel rootPanel;
-  private JPasswordField passwordField;
-  private JTextField textField;
+  private JTabbedPane tabbedPane1;
+  private JTextField loginTextField;
+  private JTextField passwordTextField;
   private JButton signInButton;
   private JLabel errorLabel;
 
