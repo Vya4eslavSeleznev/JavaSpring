@@ -4,23 +4,23 @@ import java.io.Serializable;
 
 public class AuthRequest implements Serializable
 {
-  private String userName;
+  private String username;
   private String password;
 
-  public AuthRequest(String userName, String password)
+  public AuthRequest(String username, String password)
   {
-    this.userName = userName;
+    this.username = username;
     this.password = password;
   }
 
-  public String getUserName ()
+  public String getUsername ()
   {
-    return userName;
+    return username;
   }
 
   public void setUserName (String userName)
   {
-    this.userName = userName;
+    this.username = userName;
   }
 
   public String getPassword ()

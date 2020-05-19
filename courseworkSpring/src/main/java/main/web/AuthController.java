@@ -34,7 +34,7 @@ public class AuthController
   {
     try
     {
-      String name = request.getUserName();
+      String name = request.getUsername();
       String token = jwtTokenProvider.createToken(
         name,
         userRep.findUserByUserName(name)
@@ -42,7 +42,7 @@ public class AuthController
       );
 
       Map<Object, Object> model = new HashMap<>();
-      model.put("userName", name);
+      model.put("username", name);
       model.put("token", token);
 
       return ResponseEntity.ok(model);
