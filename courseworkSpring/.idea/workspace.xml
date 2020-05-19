@@ -2,44 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="88a6bfe1-1274-47ad-9876-9cb833b429ac" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../UI/src/main/java/api/Gateway.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UI/src/main/java/api/Gateway.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UI/src/main/java/coursework/Authentication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UI/src/main/java/coursework/Authentication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UI/src/main/java/coursework/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UI/src/main/java/coursework/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UI/src/main/java/coursework/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UI/src/main/java/coursework/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UI/target/classes/api/Gateway.class" beforeDir="false" afterPath="$PROJECT_DIR$/../UI/target/classes/api/Gateway.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UI/target/classes/coursework/Authentication$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../UI/target/classes/coursework/Authentication$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UI/target/classes/coursework/Authentication.class" beforeDir="false" afterPath="$PROJECT_DIR$/../UI/target/classes/coursework/Authentication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UI/target/classes/coursework/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../UI/target/classes/coursework/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UI/target/classes/exception/AccessDeniedException.class" beforeDir="false" afterPath="$PROJECT_DIR$/../UI/target/classes/exception/AccessDeniedException.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/JpaConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/JpaConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/SpringApplicationWithPostgreSQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/SpringApplicationWithPostgreSQL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/SpringSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/SpringSecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/TestDataInit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/TestDataInit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/entity/Article.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/entity/Article.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/entity/Balance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/entity/Balance.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/entity/Operation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/entity/Operation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/exception/ArticleNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/exception/ArticleNotFoundException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/exception/BalanceNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/exception/BalanceNotFoundException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/exception/InvalidJwtAuthenticationException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/exception/InvalidJwtAuthenticationException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/exception/OperationNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/exception/OperationNotFoundException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/model/ArticleCreateModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/model/ArticleCreateModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/model/BalanceCreateModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/model/BalanceCreateModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/model/FilterModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/model/FilterModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/model/OperationCreateModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/model/OperationCreateModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/repository/ArticleRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/repository/ArticleRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/repository/BalanceRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/repository/BalanceRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/repository/OperationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/repository/OperationRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/repository/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/security/jwt/JwtAuthEntryPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/security/jwt/JwtAuthEntryPoint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/security/jwt/JwtFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/security/jwt/JwtFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/security/jwt/JwtProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/security/jwt/JwtProperties.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/security/jwt/JwtSecurityConfigurer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/security/jwt/JwtSecurityConfigurer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/security/jwt/JwtTokenProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/security/jwt/JwtTokenProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/service/ArticleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/service/ArticleService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/service/ArticleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/service/ArticleServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/service/BalanceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/service/BalanceService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/service/BalanceServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/service/BalanceServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/service/CustomUserDetailsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/service/CustomUserDetailsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/service/OperationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/service/OperationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/service/OperationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/service/OperationServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/web/ArticleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/web/ArticleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/web/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/web/AuthController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/web/AuthRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/web/AuthRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/web/BalanceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/web/BalanceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/web/OperationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/web/OperationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/main/web/AuthController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/main/web/AuthController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/main/web/AuthRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/main/web/AuthRequest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -145,22 +119,22 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="933" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1589875699602" />
-    <state width="1493" height="244" key="GridCell.Tab.0.bottom" timestamp="1589921191417">
+    <state width="1493" height="244" key="GridCell.Tab.0.bottom" timestamp="1589925872995">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="244" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1589921191417" />
-    <state width="1493" height="244" key="GridCell.Tab.0.center" timestamp="1589921191417">
+    <state width="1493" height="244" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1589925872995" />
+    <state width="1493" height="244" key="GridCell.Tab.0.center" timestamp="1589925872994">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="244" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1589921191417" />
-    <state width="1493" height="244" key="GridCell.Tab.0.left" timestamp="1589921191416">
+    <state width="1493" height="244" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1589925872994" />
+    <state width="1493" height="244" key="GridCell.Tab.0.left" timestamp="1589925872994">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="244" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1589921191416" />
-    <state width="1493" height="244" key="GridCell.Tab.0.right" timestamp="1589921191417">
+    <state width="1493" height="244" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1589925872994" />
+    <state width="1493" height="244" key="GridCell.Tab.0.right" timestamp="1589925872995">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="244" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1589921191417" />
+    <state width="1493" height="244" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1589925872995" />
     <state width="1493" height="252" key="GridCell.Tab.1.bottom" timestamp="1589751717103">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

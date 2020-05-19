@@ -1,5 +1,6 @@
 package coursework;
 
+import api.Gateway;
 import api.TokenModel;
 
 import javax.swing.*;
@@ -8,6 +9,10 @@ import javax.swing.event.ChangeListener;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.URISyntaxException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Menu {
   private JPanel rootPanel;
@@ -75,12 +80,14 @@ public class Menu {
   private JLabel errorOperationFilterLabel;
   private JLabel errorDeleteOperationLabel;
 
-  private String articleName;
-  private int articleId;
   private TokenModel tokenModel;
+  private JFrame loaderFrame;
+  private Gateway gateway;
 
-  public Menu(TokenModel tokenModel) {
+  public Menu(TokenModel tokenModel, JFrame loaderFrame, Gateway gateway) {
     this.tokenModel = tokenModel;
+    this.loaderFrame = loaderFrame;
+    this.gateway = gateway;
 
     JFrame frame = new JFrame();
     frame.add(rootPanel);
@@ -153,9 +160,31 @@ public class Menu {
     addArticleButton.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
-        articleName = addArticleTextField.getText();
+        /*articleName = addArticleTextField.getText();
         articleId = 123;
-        reloadArticleTable(addArticleTable, modelForArticle, articleId, articleName);
+        reloadArticleTable(addArticleTable, modelForArticle, articleId, articleName);*/
+
+        String articleName = addArticleTextField.getText();
+        Loader loader = new Loader(loaderFrame);
+
+        try {
+          gateway.addArticle(articleName, tokenModel).exceptionally(exception -> {
+            loaderFrame.dispose();
+            return null;
+          }).thenAccept(model -> {
+            if(model == null)
+              return;
+
+            loaderFrame.dispose();
+            //загрузить таблицу в UI. Хреново работает loader
+          });
+        }
+        catch(URISyntaxException ex) {
+          ex.printStackTrace();
+        }
+
+
+
       }
     });
   }
@@ -189,6 +218,60 @@ public class Menu {
       @Override
       public void actionPerformed(ActionEvent e) {
 
+        errorAddBalanceLabel.setText("test");
+
+
+
+        Date createDate = null;
+        String date = addBalanceDateTextField.getText();
+
+        try {
+          createDate = new SimpleDateFormat("yyyy-MM-dd").parse(date);
+        }
+        catch(ParseException ex) {
+          errorAddBalanceLabel.setText("Incorrect parameters");
+        }
+        catch(NullPointerException ex) {
+          errorAddBalanceLabel.setText("Incorrect parameters");
+        }
+
+        String debitString = addBalanceDebitTextField.getText();
+        String creditString = addBalanceCreditTextField.getText();
+        double debit = 0;
+        double credit = 0;
+
+        try {
+          debit = Double.parseDouble(debitString);
+          credit = Double.parseDouble(creditString);
+        }
+        catch(NullPointerException ex) {
+          errorAddBalanceLabel.setText("Incorrect parameters");
+        }
+        catch(NumberFormatException ex) {
+          errorAddBalanceLabel.setText("Incorrect parameters");
+        }
+
+        Loader loader = new Loader(loaderFrame);
+
+
+        try {
+          gateway.addBalance(createDate, debit, credit, tokenModel).exceptionally(exception -> {
+            loaderFrame.dispose();
+            return null;
+          }).thenAccept(model -> {
+            if(model == null)
+              return;
+
+            loaderFrame.dispose();
+            //загрузить таблицу в UI. Хреново работает loader
+          });
+        }
+        catch(URISyntaxException ex) {
+          errorAddBalanceLabel.setText("Incorrect parameters");
+        }
+
+
+
       }
     });
   }
@@ -219,6 +302,64 @@ public class Menu {
     addOperationButton.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
+        Date createDate = null;
+        String date = addOperationDateTextField.getText();
+
+        try {
+          createDate = new SimpleDateFormat("yyyy-MM-dd").parse(date);
+        }
+        catch(ParseException ex) {
+          errorAddOperationLabel.setText("Incorrect parameters");
+        }
+        catch(NullPointerException ex) {
+          errorAddOperationLabel.setText("Incorrect parameters");
+        }
+
+        String debitString = addOperationDebitTextField.getText();
+        String creditString = addOperationCreditTextField.getText();
+        double debit = 0;
+        double credit = 0;
+        int articleId = 0;
+        int balanceId = 0;
+
+        try {
+          debit = Double.parseDouble(debitString);
+          credit = Double.parseDouble(creditString);
+
+          articleId = Integer.parseInt(addOperationArtIdTextField.getText());
+          balanceId = Integer.parseInt(addOperationBalIdTextField.getText());
+        }
+        catch(NullPointerException ex) {
+          errorAddOperationLabel.setText("Incorrect parameters");
+        }
+        catch(NumberFormatException ex) {
+          errorAddOperationLabel.setText("Incorrect parameters");
+        }
+
+        Loader loader = new Loader(loaderFrame);
+
+        try {
+          gateway.addOperation(articleId, debit, credit, createDate, balanceId, tokenModel).exceptionally(exception -> {
+            loaderFrame.dispose();
+            return null;
+          }).thenAccept(model -> {
+            if(model == null)
+              return;
+
+            loaderFrame.dispose();
+            //загрузить таблицу в UI. Хреново работает loader
+          });
+        }
+        catch(URISyntaxException ex) {
+          errorAddOperationLabel.setText("Incorrect parameters");
+        }
+
+
+
+
+
+
+
 
       }
     });

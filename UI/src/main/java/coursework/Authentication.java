@@ -53,7 +53,7 @@ public class Authentication {
 
             loaderFrame.dispose();
             frame.dispose();
-            Menu menu = new Menu(model);
+            Menu menu = new Menu(model, frame, gateway);
             menu.menuImplementation();
           });
         }

@@ -8,6 +8,7 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.file.AccessDeniedException;
+import java.util.Date;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionException;
 
@@ -27,8 +28,52 @@ public class Gateway {
     }
   }
 
-  public CompletableFuture<TokenModel> add() {
-    return null;
+  public CompletableFuture<TokenModel> addArticle(String name, TokenModel tokenModel) throws URISyntaxException {
+    try {
+      ArticleModel articleModel = new ArticleModel(name);
+
+      return sendPost(new URI("http://localhost:8080/article"), articleModel, tokenModel.getToken()).thenApply(body -> {
+        Gson gson = new Gson();
+
+        return gson.fromJson(body, TokenModel.class);
+      });
+    }
+    catch(Exception e) {
+      throw new URISyntaxException("", "");
+    }
+  }
+
+  public CompletableFuture<TokenModel> addBalance(Date createDate, double debit, double credit,
+                                                  TokenModel tokenModel) throws URISyntaxException {
+    try {
+      BalanceModel balanceModel = new BalanceModel(createDate, debit, credit);
+
+      return sendPost(new URI("http://localhost:8080/balance"), balanceModel, tokenModel.getToken()).thenApply(body -> {
+        Gson gson = new Gson();
+
+        return gson.fromJson(body, TokenModel.class);
+      });
+    }
+    catch(Exception e) {
+      throw new URISyntaxException("", "");
+    }
+  }
+
+  public CompletableFuture<TokenModel> addOperation(int articleId, double debit, double credit,
+                                                    Date createDate, int balanceId,
+                                                    TokenModel tokenModel) throws URISyntaxException {
+    try {
+      OperationModel operationModel = new OperationModel(articleId, debit, credit, createDate, balanceId);
+
+      return sendPost(new URI("http://localhost:8080/operation"), operationModel, tokenModel.getToken()).thenApply(body -> {
+        Gson gson = new Gson();
+
+        return gson.fromJson(body, TokenModel.class);
+      });
+    }
+    catch(Exception e) {
+      throw new URISyntaxException("", "");
+    }
   }
 
   private <TBody> CompletableFuture<String> sendPost(URI uri, TBody body, String token) {
