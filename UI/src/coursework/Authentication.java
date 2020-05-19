@@ -41,10 +41,10 @@ public class Authentication
         {
 
 
-
-          frame.dispose();
-          Menu menu = new Menu();
-          menu.menuImplementation();
+          Loader loader = new Loader();
+          //frame.dispose();
+          //Menu menu = new Menu();
+          //menu.menuImplementation();
         }
         else
         {

@@ -12,7 +12,7 @@ public class Loader
     JFrame frame = new JFrame();
     frame.add(rootPanel);
     frame.setTitle("Loading...");
-    frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
     frame.setSize(400, 200);
     frame.setLocation(570, 300);
     frame.setVisible(true);
