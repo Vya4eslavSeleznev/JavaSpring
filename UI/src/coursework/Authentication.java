@@ -6,13 +6,12 @@ import java.awt.event.ActionListener;
 
 public class Authentication
 {
-  private JFrame frame1;
   private JPanel rootPanel;
-  private JTabbedPane tabbedPane1;
+  private JTabbedPane tabbedPane;
   private JTextField loginTextField;
-  private JTextField passwordTextField;
   private JButton signInButton;
   private JLabel errorLabel;
+  private JPasswordField passwordField;
 
   public Authentication()
   {
@@ -20,22 +19,37 @@ public class Authentication
     frame.add(rootPanel);
     frame.setTitle("Home budget");
     frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-    frame.setSize(1000, 700);
-    frame.setLocation(290, 50);
+    frame.setSize(550, 350);
+    frame.setLocation(500, 250);
     frame.setVisible(true);
 
-    frame1 = frame;
+    authenticationImplementation(frame);
   }
 
-  public void interfaceImplementation()
+  private void authenticationImplementation(JFrame frame)
   {
     signInButton.addActionListener(new ActionListener()
     {
       @Override
       public void actionPerformed(ActionEvent e)
       {
-        errorLabel.setText("test");
-        //Menu menu = new Menu(frame1);
+        String login = loginTextField.getText();
+        char[] password = passwordField.getPassword();
+        //String myPass = String.valueOf(passwordField.getPassword());
+
+        if(true)
+        {
+
+
+
+          frame.dispose();
+          Menu menu = new Menu();
+          menu.menuImplementation();
+        }
+        else
+        {
+          errorLabel.setText("Incorrect parameters");
+        }
       }
     });
   }

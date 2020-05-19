@@ -4,8 +4,7 @@ public class Main
 {
   public static void main(String[] args)
   {
-    Authentication au = new Authentication();
-    //Menu menu = new Menu();
-    //au.interfaceImplementation();
+    //Authentication authentication = new Authentication();
+    Loader loader = new Loader();
   }
 }

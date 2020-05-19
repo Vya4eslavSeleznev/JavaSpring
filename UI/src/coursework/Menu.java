@@ -1,7 +1,11 @@
 package coursework;
 
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import javax.swing.table.DefaultTableModel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Menu
 {
@@ -68,13 +72,18 @@ public class Menu
 
   private JLabel errorAddOperationLabel;
   private JLabel errorOperationFilterLabel;
-  private JLabel errorDeleteoperationLabel;
+  private JLabel errorDeleteOperationLabel;
+
+  private String articleName;
+  private int articleId;
+
+  //private int
 
   public Menu()
   {
     JFrame frame = new JFrame();
     frame.add(rootPanel);
-    frame.setTitle("Menu");
+    frame.setTitle("Home budget");
     frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     frame.setSize(1000, 700);
     frame.setLocation(290, 50);
@@ -93,12 +102,203 @@ public class Menu
     showAllBalanceTable.setModel(modelForBalance);
     filterBalanceTable.setModel(modelForBalance);
 
-    DefaultTableModel modelForOperation = getDefaultDataModelForBalance();
+    DefaultTableModel modelForOperation = getDefaultDataModelForOperation();
     addOperationTable.setModel(modelForOperation);
     deleteOperationTable.setModel(modelForOperation);
     showAllOperationTable.setModel(modelForOperation);
     operationFilterTable.setModel(modelForOperation);
+
+    //необходимо загрузить все данные в таблицы
+
   }
+
+  public void menuImplementation()
+  {
+    /*System.out.println(mainTabbedPane.getTitleAt(0));
+    System.out.println(mainTabbedPane.getTitleAt(1));
+    System.out.println(mainTabbedPane.getTitleAt(2));
+    System.out.println("================================");
+    System.out.println(articleTabbedPane.getTitleAt(0));
+    System.out.println(articleTabbedPane.getTitleAt(1));
+    System.out.println(articleTabbedPane.getTitleAt(2));
+    System.out.println(articleTabbedPane.getTitleAt(3));
+    System.out.println("================================");
+    System.out.println(balanceTabbedPane.getTitleAt(0));
+    System.out.println(balanceTabbedPane.getTitleAt(1));
+    System.out.println(balanceTabbedPane.getTitleAt(2));
+    System.out.println(balanceTabbedPane.getTitleAt(3));
+    System.out.println("================================");
+    System.out.println(operationTabbedPane.getTitleAt(0));
+    System.out.println(operationTabbedPane.getTitleAt(1));
+    System.out.println(operationTabbedPane.getTitleAt(2));
+    System.out.println(operationTabbedPane.getTitleAt(3));*/
+
+
+
+    addArticle();
+    deleteArticle();
+    articleFilter();
+
+    addBalance();
+    deleteBalance();
+    balanceFilter();
+
+    addOperation();
+    deleteOperation();
+    operationFilter();
+  }
+
+  private void addArticle()
+  {
+    DefaultTableModel modelForArticle = getDefaultDataModelForArticle();
+
+    addArticleButton.addActionListener(new ActionListener()
+    {
+      @Override
+      public void actionPerformed(ActionEvent e)
+      {
+        articleName = addArticleTextField.getText();
+        articleId = 123;
+        reloadArticleTable(addArticleTable, modelForArticle, articleId, articleName);
+      }
+    });
+  }
+
+  private void deleteArticle()
+  {
+    DefaultTableModel modelForArticle = getDefaultDataModelForArticle();
+
+    deleteArticleButton.addActionListener(new ActionListener()
+    {
+      @Override
+      public void actionPerformed(ActionEvent e)
+      {
+
+      }
+    });
+  }
+
+  private void showAllArticle()
+  {
+
+  }
+
+  private void articleFilter()
+  {
+    articleFilterButton.addActionListener(new ActionListener()
+    {
+      @Override
+      public void actionPerformed(ActionEvent e)
+      {
+
+      }
+    });
+  }
+
+  private void addBalance()
+  {
+    addBalanceButton.addActionListener(new ActionListener()
+    {
+      @Override
+      public void actionPerformed(ActionEvent e)
+      {
+
+      }
+    });
+  }
+
+  private void deleteBalance()
+  {
+    deleteBalanceButton.addActionListener(new ActionListener()
+    {
+      @Override
+      public void actionPerformed(ActionEvent e)
+      {
+
+      }
+    });
+  }
+
+  private void showAllBalance()
+  {
+
+  }
+
+  private void balanceFilter()
+  {
+    balanceFilterButton.addActionListener(new ActionListener()
+    {
+      @Override
+      public void actionPerformed(ActionEvent e)
+      {
+
+      }
+    });
+  }
+
+  private void addOperation()
+  {
+    addOperationButton.addActionListener(new ActionListener()
+    {
+      @Override
+      public void actionPerformed(ActionEvent e)
+      {
+
+      }
+    });
+  }
+
+  private void deleteOperation()
+  {
+    deleteOperationButton.addActionListener(new ActionListener()
+    {
+      @Override
+      public void actionPerformed(ActionEvent e)
+      {
+
+      }
+    });
+  }
+
+  private void showAllOperation()
+  {
+
+  }
+
+  private void operationFilter()
+  {
+    operationFilterButton.addActionListener(new ActionListener()
+    {
+      @Override
+      public void actionPerformed(ActionEvent e)
+      {
+
+      }
+    });
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   private DefaultTableModel getDefaultDataModelForArticle()
   {
@@ -143,5 +343,27 @@ public class Menu
     model.addColumn("BalanceId");
 
     return model;
+  }
+
+  private void reloadArticleTable(JTable table, DefaultTableModel model, int id, String name)
+  {
+
+    model.addRow(new Object[] {id, name});
+    table.setModel(model);
+  }
+
+  private void selectTabArticle()
+  {
+
+  }
+
+  private void selectTabBalance()
+  {
+
+  }
+
+  private void selectTabOperation()
+  {
+
   }
 }
