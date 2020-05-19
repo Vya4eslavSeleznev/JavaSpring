@@ -1,27 +1,22 @@
 package api;
 
-public class TokenModel
-{
+public class TokenModel {
   private String username;
   private String token;
 
-  public String getUsername ()
-  {
+  public String getUsername() {
     return username;
   }
 
-  public void setUsername (String username)
-  {
+  public void setUsername(String username) {
     this.username = username;
   }
 
-  public String getToken ()
-  {
+  public String getToken() {
     return token;
   }
 
-  public void setToken (String token)
-  {
+  public void setToken(String token) {
     this.token = token;
   }
 }

@@ -1,7 +1,6 @@
 package api;
 
-public class LoginModel
-{
+public class LoginModel {
   private String username;
   private String password;
 
@@ -10,13 +9,11 @@ public class LoginModel
     this.password = password;
   }
 
-  public String getUsername ()
-  {
+  public String getUsername() {
     return username;
   }
 
-  public String getPassword ()
-  {
+  public String getPassword() {
     return password;
   }
 }

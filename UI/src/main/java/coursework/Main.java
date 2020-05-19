@@ -1,14 +1,10 @@
 package coursework;
 
-import api.CustomHttpClient;
+import api.Gateway;
 
-import javax.swing.*;
-
-public class Main
-{
-  public static void main(String[] args)
-  {
-    CustomHttpClient client = new CustomHttpClient();
+public class Main {
+  public static void main(String[] args) {
+    Gateway client = new Gateway();
     Authentication authentication = new Authentication(client);
   }
 }

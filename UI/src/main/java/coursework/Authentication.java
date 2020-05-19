@@ -1,25 +1,23 @@
 package coursework;
 
-import api.CustomHttpClient;
+import api.Gateway;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.URISyntaxException;
 
-public class Authentication
-{
+public class Authentication {
   private JPanel rootPanel;
   private JTabbedPane tabbedPane;
   private JTextField userNameTextField;
   private JButton signInButton;
   private JLabel errorLabel;
   private JPasswordField passwordField;
-  private CustomHttpClient httpClient;
+  private Gateway gateway;
 
-  public Authentication (CustomHttpClient httpClient)
-  {
-    this.httpClient = httpClient;
+  public Authentication(Gateway gateway) {
+    this.gateway = gateway;
 
     JFrame frame = new JFrame();
     frame.add(rootPanel);
@@ -32,31 +30,26 @@ public class Authentication
     authenticationImplementation(frame);
   }
 
-  private void authenticationImplementation (JFrame frame)
-  {
+  private void authenticationImplementation(JFrame frame) {
     JFrame loaderFrame = new JFrame();
     errorLabel.setText("");
 
-    signInButton.addActionListener(new ActionListener()
-    {
+    signInButton.addActionListener(new ActionListener() {
       @Override
-      public void actionPerformed (ActionEvent e)
-      {
+      public void actionPerformed(ActionEvent e) {
         String username = userNameTextField.getText();
         String password = String.valueOf(passwordField.getPassword());
 
         Loader loader = new Loader(loaderFrame);
 
-        try
-        {
-          httpClient.login(username, password).exceptionally(exception ->
-          {
+        try {
+          gateway.login(username, password).exceptionally(exception -> {
             loaderFrame.dispose();
             errorLabel.setText("Incorrect parameters");
             return null;
-          }).thenAccept(model ->
-          {
-            if (model == null) return;
+          }).thenAccept(model -> {
+            if(model == null)
+              return;
 
             loaderFrame.dispose();
             frame.dispose();
@@ -64,8 +57,7 @@ public class Authentication
             menu.menuImplementation();
           });
         }
-        catch (URISyntaxException ex)
-        {
+        catch(URISyntaxException ex) {
           ex.printStackTrace();
         }
       }

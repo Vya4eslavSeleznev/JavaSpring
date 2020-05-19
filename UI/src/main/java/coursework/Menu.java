@@ -9,8 +9,7 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Menu
-{
+public class Menu {
   private JPanel rootPanel;
 
   private JTabbedPane mainTabbedPane;
@@ -80,8 +79,7 @@ public class Menu
   private int articleId;
   private TokenModel tokenModel;
 
-  public Menu(TokenModel tokenModel)
-  {
+  public Menu(TokenModel tokenModel) {
     this.tokenModel = tokenModel;
 
     JFrame frame = new JFrame();
@@ -115,8 +113,7 @@ public class Menu
 
   }
 
-  public void menuImplementation()
-  {
+  public void menuImplementation() {
     /*System.out.println(mainTabbedPane.getTitleAt(0));
     System.out.println(mainTabbedPane.getTitleAt(1));
     System.out.println(mainTabbedPane.getTitleAt(2));
@@ -137,7 +134,6 @@ public class Menu
     System.out.println(operationTabbedPane.getTitleAt(3));*/
 
 
-
     addArticle();
     deleteArticle();
     articleFilter();
@@ -151,15 +147,12 @@ public class Menu
     operationFilter();
   }
 
-  private void addArticle()
-  {
+  private void addArticle() {
     DefaultTableModel modelForArticle = getDefaultDataModelForArticle();
 
-    addArticleButton.addActionListener(new ActionListener()
-    {
+    addArticleButton.addActionListener(new ActionListener() {
       @Override
-      public void actionPerformed(ActionEvent e)
-      {
+      public void actionPerformed(ActionEvent e) {
         articleName = addArticleTextField.getText();
         articleId = 123;
         reloadArticleTable(addArticleTable, modelForArticle, articleId, articleName);
@@ -167,144 +160,94 @@ public class Menu
     });
   }
 
-  private void deleteArticle()
-  {
+  private void deleteArticle() {
     DefaultTableModel modelForArticle = getDefaultDataModelForArticle();
 
-    deleteArticleButton.addActionListener(new ActionListener()
-    {
+    deleteArticleButton.addActionListener(new ActionListener() {
       @Override
-      public void actionPerformed(ActionEvent e)
-      {
+      public void actionPerformed(ActionEvent e) {
 
       }
     });
   }
 
-  private void showAllArticle()
-  {
+  private void showAllArticle() {
 
   }
 
-  private void articleFilter()
-  {
-    articleFilterButton.addActionListener(new ActionListener()
-    {
+  private void articleFilter() {
+    articleFilterButton.addActionListener(new ActionListener() {
       @Override
-      public void actionPerformed(ActionEvent e)
-      {
+      public void actionPerformed(ActionEvent e) {
 
       }
     });
   }
 
-  private void addBalance()
-  {
-    addBalanceButton.addActionListener(new ActionListener()
-    {
+  private void addBalance() {
+    addBalanceButton.addActionListener(new ActionListener() {
       @Override
-      public void actionPerformed(ActionEvent e)
-      {
+      public void actionPerformed(ActionEvent e) {
 
       }
     });
   }
 
-  private void deleteBalance()
-  {
-    deleteBalanceButton.addActionListener(new ActionListener()
-    {
+  private void deleteBalance() {
+    deleteBalanceButton.addActionListener(new ActionListener() {
       @Override
-      public void actionPerformed(ActionEvent e)
-      {
+      public void actionPerformed(ActionEvent e) {
 
       }
     });
   }
 
-  private void showAllBalance()
-  {
+  private void showAllBalance() {
 
   }
 
-  private void balanceFilter()
-  {
-    balanceFilterButton.addActionListener(new ActionListener()
-    {
+  private void balanceFilter() {
+    balanceFilterButton.addActionListener(new ActionListener() {
       @Override
-      public void actionPerformed(ActionEvent e)
-      {
+      public void actionPerformed(ActionEvent e) {
 
       }
     });
   }
 
-  private void addOperation()
-  {
-    addOperationButton.addActionListener(new ActionListener()
-    {
+  private void addOperation() {
+    addOperationButton.addActionListener(new ActionListener() {
       @Override
-      public void actionPerformed(ActionEvent e)
-      {
+      public void actionPerformed(ActionEvent e) {
 
       }
     });
   }
 
-  private void deleteOperation()
-  {
-    deleteOperationButton.addActionListener(new ActionListener()
-    {
+  private void deleteOperation() {
+    deleteOperationButton.addActionListener(new ActionListener() {
       @Override
-      public void actionPerformed(ActionEvent e)
-      {
+      public void actionPerformed(ActionEvent e) {
 
       }
     });
   }
 
-  private void showAllOperation()
-  {
+  private void showAllOperation() {
 
   }
 
-  private void operationFilter()
-  {
-    operationFilterButton.addActionListener(new ActionListener()
-    {
+  private void operationFilter() {
+    operationFilterButton.addActionListener(new ActionListener() {
       @Override
-      public void actionPerformed(ActionEvent e)
-      {
+      public void actionPerformed(ActionEvent e) {
 
       }
     });
   }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  private DefaultTableModel getDefaultDataModelForArticle()
-  {
+  private DefaultTableModel getDefaultDataModelForArticle() {
     DefaultTableModel model = new DefaultTableModel();
     model.addColumn("Id");
     model.addColumn("Name");
@@ -312,8 +255,7 @@ public class Menu
     return model;
   }
 
-  private DefaultTableModel getDefaultDataModelForArticleFilter()
-  {
+  private DefaultTableModel getDefaultDataModelForArticleFilter() {
     DefaultTableModel model = new DefaultTableModel();
     model.addColumn("ArticleId");
     model.addColumn("Debit");
@@ -323,8 +265,7 @@ public class Menu
     return model;
   }
 
-  private DefaultTableModel getDefaultDataModelForBalance()
-  {
+  private DefaultTableModel getDefaultDataModelForBalance() {
     DefaultTableModel model = new DefaultTableModel();
     model.addColumn("Id");
     model.addColumn("CreateDate");
@@ -335,8 +276,7 @@ public class Menu
     return model;
   }
 
-  private DefaultTableModel getDefaultDataModelForOperation()
-  {
+  private DefaultTableModel getDefaultDataModelForOperation() {
     DefaultTableModel model = new DefaultTableModel();
     model.addColumn("Id");
     model.addColumn("ArticleId");
@@ -348,30 +288,25 @@ public class Menu
     return model;
   }
 
-  private void reloadArticleTable(JTable table, DefaultTableModel model, int id, String name)
-  {
+  private void reloadArticleTable(JTable table, DefaultTableModel model, int id, String name) {
 
     model.addRow(new Object[] {id, name});
     table.setModel(model);
   }
 
-  private void selectTabArticle()
-  {
+  private void selectTabArticle() {
 
   }
 
-  private void selectTabBalance()
-  {
+  private void selectTabBalance() {
 
   }
 
-  private void selectTabOperation()
-  {
+  private void selectTabOperation() {
 
   }
 
-  public TokenModel getTokenModel ()
-  {
+  public TokenModel getTokenModel() {
     return tokenModel;
   }
 }

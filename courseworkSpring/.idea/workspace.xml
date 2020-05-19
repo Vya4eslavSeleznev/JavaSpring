@@ -2,35 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="88a6bfe1-1274-47ad-9876-9cb833b429ac" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../UI/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../UI/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UI/UI.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../UI/UI.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UI/out/production/UI/coursework/Authentication$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UI/out/production/UI/coursework/Authentication.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UI/out/production/UI/coursework/Loader.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UI/out/production/UI/coursework/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UI/out/production/UI/coursework/Menu$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UI/out/production/UI/coursework/Menu$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UI/out/production/UI/coursework/Menu$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UI/out/production/UI/coursework/Menu$4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UI/out/production/UI/coursework/Menu$5.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UI/out/production/UI/coursework/Menu$6.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UI/out/production/UI/coursework/Menu$7.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UI/out/production/UI/coursework/Menu$8.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UI/out/production/UI/coursework/Menu$9.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UI/out/production/UI/coursework/Menu.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UI/src/coursework/Authentication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UI/src/main/java/coursework/Authentication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UI/src/coursework/Loader.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UI/src/main/java/coursework/Loader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UI/src/coursework/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UI/src/main/java/coursework/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UI/src/coursework/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UI/src/main/java/coursework/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UI/src/coursework/form/Authentication.form" beforeDir="false" afterPath="$PROJECT_DIR$/../UI/src/main/java/coursework/form/Authentication.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UI/src/coursework/form/Loader.form" beforeDir="false" afterPath="$PROJECT_DIR$/../UI/src/main/java/coursework/form/Loader.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UI/src/coursework/form/Menu.form" beforeDir="false" afterPath="$PROJECT_DIR$/../UI/src/main/java/coursework/form/Menu.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UI/src/main/java/api/CustomHttpClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UI/src/main/java/api/Gateway.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UI/src/main/java/api/LoginModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UI/src/main/java/api/LoginModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UI/src/main/java/api/TokenModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UI/src/main/java/api/TokenModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UI/src/main/java/coursework/Authentication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UI/src/main/java/coursework/Authentication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UI/src/main/java/coursework/Loader.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UI/src/main/java/coursework/Loader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UI/src/main/java/coursework/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UI/src/main/java/coursework/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UI/src/main/java/coursework/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UI/src/main/java/coursework/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UI/src/main/java/exception/AccessDeniedException.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UI/src/main/java/exception/AccessDeniedException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UI/target/classes/api/CustomHttpClient.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UI/target/classes/coursework/Authentication$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../UI/target/classes/coursework/Authentication$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UI/target/classes/coursework/Authentication.class" beforeDir="false" afterPath="$PROJECT_DIR$/../UI/target/classes/coursework/Authentication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UI/target/classes/coursework/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../UI/target/classes/coursework/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/web/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/web/AuthController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/web/AuthRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/web/AuthRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/main/web/AuthController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/main/web/AuthController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/main/web/AuthRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/main/web/AuthRequest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
