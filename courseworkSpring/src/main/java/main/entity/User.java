@@ -12,8 +12,7 @@ import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "usr")
-public class User implements UserDetails
-{
+public class User implements UserDetails {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
@@ -26,61 +25,51 @@ public class User implements UserDetails
   @ElementCollection(fetch = FetchType.EAGER)
   private List<String> roles = new ArrayList<>();
 
-  public User()
-  {
+  public User() {
   }
 
-  public User(String userName, String password, List<String> roles)
-  {
+  public User(String userName, String password, List<String> roles) {
     this.userName = userName;
     this.password = password;
     this.roles = roles;
   }
 
   @Override
-  public Collection<? extends GrantedAuthority> getAuthorities()
-  {
+  public Collection<? extends GrantedAuthority> getAuthorities() {
     return roles.stream().map(SimpleGrantedAuthority::new).collect(Collectors.toList());
   }
 
-  public List<String> getRoles()
-  {
+  public List<String> getRoles() {
     return roles;
   }
 
   @Override
-  public String getPassword()
-  {
+  public String getPassword() {
     return password;
   }
 
   @Override
-  public String getUsername()
-  {
+  public String getUsername() {
     return userName;
   }
 
   @Override
-  public boolean isAccountNonExpired()
-  {
+  public boolean isAccountNonExpired() {
     return true;
   }
 
   @Override
-  public boolean isAccountNonLocked()
-  {
+  public boolean isAccountNonLocked() {
     return true;
   }
 
   @Override
-  public boolean isCredentialsNonExpired()
-  {
+  public boolean isCredentialsNonExpired() {
     return true;
   }
 
   @Override
-  public boolean isEnabled()
-  {
+  public boolean isEnabled() {
     return true;
   }
 }

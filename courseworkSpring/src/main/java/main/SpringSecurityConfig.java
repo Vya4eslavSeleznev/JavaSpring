@@ -16,15 +16,13 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
-public class SpringSecurityConfig extends WebSecurityConfigurerAdapter
-{
+public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
   @Autowired
   private JwtTokenProvider jwtTokenProvider;
 
   @Bean
   @Override
-  public AuthenticationManager authenticationManagerBean() throws Exception
-  {
+  public AuthenticationManager authenticationManagerBean() throws Exception {
     return super.authenticationManagerBean();
   }
 
@@ -34,18 +32,9 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter
   }
 
   @Override
-  protected void configure(HttpSecurity http) throws Exception
-  {
-    http.httpBasic().disable()
-      .csrf().disable()
-      .formLogin().disable()
-      .sessionManagement()
-      .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-      .and()
-      .authorizeRequests()
-      .antMatchers("/auth/signin").permitAll()
-      .anyRequest().authenticated()
-      .and()
-      .apply(new JwtSecurityConfigurer(jwtTokenProvider));
+  protected void configure(HttpSecurity http) throws Exception {
+    http.httpBasic().disable().csrf().disable().formLogin().disable().sessionManagement().sessionCreationPolicy(
+      SessionCreationPolicy.STATELESS).and().authorizeRequests().antMatchers(
+      "/auth/signin").permitAll().anyRequest().authenticated().and().apply(new JwtSecurityConfigurer(jwtTokenProvider));
   }
 }

@@ -7,11 +7,9 @@ import org.springframework.context.annotation.Configuration;
 import javax.sql.DataSource;
 
 @Configuration
-public class JpaConfig
-{
+public class JpaConfig {
   @Bean
-  public DataSource getDataSource()
-  {
+  public DataSource getDataSource() {
     DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
     dataSourceBuilder.driverClassName("org.postgresql.Driver");
     dataSourceBuilder.url("jdbc:postgresql://127.0.0.1:5432/coursework");

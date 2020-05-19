@@ -12,8 +12,7 @@ import org.springframework.stereotype.Component;
 import java.util.Collections;
 
 @Component
-public class TestDataInit implements CommandLineRunner
-{
+public class TestDataInit implements CommandLineRunner {
   @Autowired
   OperationRepository appRep;
 
@@ -24,8 +23,7 @@ public class TestDataInit implements CommandLineRunner
   PasswordEncoder pwdEncoder;
 
   @Override
-  public void run (String... args) throws Exception
-  {
+  public void run(String... args) throws Exception {
     //userRep.save(new User("user", pwdEncoder.encode("pwd"), Collections.singletonList("ROLE_USER")));
     //userRep.save(new User("admin", pwdEncoder.encode("apwd"), Collections.singletonList("ROLE_ADMIN")));
   }

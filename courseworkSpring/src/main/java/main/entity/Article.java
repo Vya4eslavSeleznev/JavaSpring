@@ -3,41 +3,34 @@ package main.entity;
 import javax.persistence.*;
 
 @Entity
-public class Article
-{
+public class Article {
   @Id
-  @GeneratedValue (strategy = GenerationType.IDENTITY)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
 
-  @Column (nullable = false)
+  @Column(nullable = false)
   private String name;
 
-  public Article ()
-  {
+  public Article() {
   }
 
-  public Article (String name)
-  {
+  public Article(String name) {
     this.name = name;
   }
 
-  public int getId ()
-  {
+  public int getId() {
     return id;
   }
 
-  public void setId (int id)
-  {
+  public void setId(int id) {
     this.id = id;
   }
 
-  public String getName ()
-  {
+  public String getName() {
     return name;
   }
 
-  public void setName (String name)
-  {
+  public void setName(String name) {
     this.name = name;
   }
 }

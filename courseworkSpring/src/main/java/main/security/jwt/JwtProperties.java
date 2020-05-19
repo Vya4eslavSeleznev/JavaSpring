@@ -5,28 +5,23 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @ConfigurationProperties(prefix = "jwt")
-public class JwtProperties
-{
+public class JwtProperties {
   private String secretKey = "verySecretKey";
   private long validityInMs = 180000;
 
-  public long getValidityInMs()
-  {
+  public long getValidityInMs() {
     return validityInMs;
   }
 
-  public void setValidityInMs(long validityInMs)
-  {
+  public void setValidityInMs(long validityInMs) {
     this.validityInMs = validityInMs;
   }
 
-  public String getSecretKey()
-  {
+  public String getSecretKey() {
     return secretKey;
   }
 
-  public void setSecretKey(String secretKey)
-  {
+  public void setSecretKey(String secretKey) {
     this.secretKey = secretKey;
   }
 }

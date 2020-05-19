@@ -18,8 +18,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/auth")
-public class AuthController
-{
+public class AuthController {
   @Autowired
   AuthenticationManager authenticationManager;
 
@@ -30,16 +29,11 @@ public class AuthController
   UserRepository userRep;
 
   @PostMapping("/signin")
-  public ResponseEntity singIn(@RequestBody AuthRequest request)
-  {
-    try
-    {
+  public ResponseEntity singIn(@RequestBody AuthRequest request) {
+    try {
       String name = request.getUsername();
-      String token = jwtTokenProvider.createToken(
-        name,
-        userRep.findUserByUserName(name)
-          .orElseThrow(() -> new UsernameNotFoundException("User not found")).getRoles()
-      );
+      String token = jwtTokenProvider.createToken(name,
+        userRep.findUserByUserName(name).orElseThrow(() -> new UsernameNotFoundException("User not found")).getRoles());
 
       Map<Object, Object> model = new HashMap<>();
       model.put("username", name);
@@ -47,8 +41,7 @@ public class AuthController
 
       return ResponseEntity.ok(model);
     }
-    catch (AuthenticationException e)
-    {
+    catch(AuthenticationException e) {
       throw new BadCredentialsException("Invalid username or password");
     }
   }

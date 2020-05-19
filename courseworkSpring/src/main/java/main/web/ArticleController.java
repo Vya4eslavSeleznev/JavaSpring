@@ -17,54 +17,45 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.List;
 
 @RestController
-@RequestMapping ("/article")
-public class ArticleController
-{
+@RequestMapping("/article")
+public class ArticleController {
   private ArticleService articleService;
   private OperationService operationService;
 
   @Autowired
-  public void setArticleService (ArticleService articleService)
-  {
+  public void setArticleService(ArticleService articleService) {
     this.articleService = articleService;
   }
 
   @Autowired
-  public void setOperationService (OperationService operationService)
-  {
+  public void setOperationService(OperationService operationService) {
     this.operationService = operationService;
   }
 
   @PostMapping
-  public void addArticle(@RequestBody ArticleCreateModel articleModel)
-  {
+  public void addArticle(@RequestBody ArticleCreateModel articleModel) {
     Article article = new Article(articleModel.name);
     articleService.addArticle(article);
   }
 
-  @DeleteMapping ("{id}")
-  public void deleteArticle(@PathVariable("id") int id)
-  {
-    try
-    {
+  @DeleteMapping("{id}")
+  public void deleteArticle(@PathVariable("id") int id) {
+    try {
       articleService.deleteArticle(id);
     }
-    catch(ArticleNotFoundException e)
-    {
+    catch(ArticleNotFoundException e) {
       throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Article not found");
     }
   }
 
   @GetMapping()
-  public ResponseEntity<List<Article>> getAllArticles()
-  {
+  public ResponseEntity<List<Article>> getAllArticles() {
     List<Article> list = articleService.listArticles();
     return new ResponseEntity<>(list, HttpStatus.OK);
   }
 
   @GetMapping("{id}")
-  public ResponseEntity<List<Operation>> getCreditForCategory(@PathVariable("id") int id)
-  {
+  public ResponseEntity<List<Operation>> getCreditForCategory(@PathVariable("id") int id) {
     List<Operation> list = articleService.getCreditForCategory(id);
     return new ResponseEntity<>(list, HttpStatus.OK);
   }

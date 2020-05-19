@@ -8,12 +8,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class JwtAuthEntryPoint implements AuthenticationEntryPoint
-{
+public class JwtAuthEntryPoint implements AuthenticationEntryPoint {
   @Override
   public void commence(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse,
-                        AuthenticationException e) throws IOException, ServletException
-  {
+                       AuthenticationException e) throws IOException, ServletException {
     httpServletResponse.sendError(HttpServletResponse.SC_UNAUTHORIZED);
 
   }

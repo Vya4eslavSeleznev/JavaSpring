@@ -11,24 +11,19 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
-public class SpringApplicationWithPostgreSQL
-{
+public class SpringApplicationWithPostgreSQL {
   private static final Logger log = LoggerFactory.getLogger(SpringApplicationWithPostgreSQL.class);
 
-  public static void main (String[] args)
-  {
+  public static void main(String[] args) {
     SpringApplication.run(SpringApplicationWithPostgreSQL.class, args);
   }
 
   @Bean
-  public CommandLineRunner test(OperationRepository repository)
-  {
-    return args ->
-    {
+  public CommandLineRunner test(OperationRepository repository) {
+    return args -> {
       Iterable<Operation> temp = repository.findAll();
 
-      for (Operation temp2 : temp)
-      {
+      for(Operation temp2 : temp) {
         log.info("The application is: " + temp2.getId());
       }
 

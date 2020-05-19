@@ -16,8 +16,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class BalanceServiceImpl implements BalanceService
-{
+public class BalanceServiceImpl implements BalanceService {
   @Autowired
   private BalanceRepository balanceRepository;
 
@@ -25,57 +24,49 @@ public class BalanceServiceImpl implements BalanceService
   private EntityManager entityManager;
 
   @Override
-  public void addBalance(Balance balance)
-  {
+  public void addBalance(Balance balance) {
     balanceRepository.save(balance);
   }
 
   @Override
-  public void deleteBalance(int id)
-  {
+  public void deleteBalance(int id) {
     Optional<Balance> balance = balanceRepository.findById(id);
 
-    if (!balance.isPresent())
+    if(!balance.isPresent())
       throw new BalanceNotFoundException("Balance not found");
 
     balanceRepository.delete(balance.get());
   }
 
   @Override
-  public List<Balance> listBalances()
-  {
+  public List<Balance> listBalances() {
     return (List<Balance>) balanceRepository.findAll();
   }
 
   @Override
-  public List<Balance> getBalanceWithFilter(FilterModel filter)
-  {
+  public List<Balance> getBalanceWithFilter(FilterModel filter) {
     CriteriaBuilder cb = entityManager.getCriteriaBuilder();
     CriteriaQuery<Balance> query = cb.createQuery(Balance.class);
     Root<Balance> balance = query.from(Balance.class);
 
     query.select(balance);
 
-    if (filter.hasFrom() || filter.hasTo())
-    {
+    if(filter.hasFrom() || filter.hasTo()) {
       Path<Date> balanceDate = balance.get("createDate");
 
       ArrayList<Predicate> predicates = new ArrayList<Predicate>();
 
-      if (filter.hasFrom())
-      {
+      if(filter.hasFrom()) {
         predicates.add(cb.greaterThan(balanceDate, filter.getFrom()));
       }
 
-      if (filter.hasTo())
-      {
+      if(filter.hasTo()) {
         predicates.add(cb.lessThan(balanceDate, filter.getTo()));
       }
 
       query.where(cb.and(predicates.toArray(new Predicate[predicates.size()])));
     }
 
-    return entityManager.createQuery(query)
-      .getResultList();
+    return entityManager.createQuery(query).getResultList();
   }
 }

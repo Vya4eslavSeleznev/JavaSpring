@@ -18,49 +18,42 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/balance")
-public class BalanceController
-{
+public class BalanceController {
   private BalanceService balanceService;
 
   @Autowired
-  public void setBalanceService(BalanceService balanceService)
-  {
+  public void setBalanceService(BalanceService balanceService) {
     this.balanceService = balanceService;
   }
 
   @PostMapping()
-  public void addBalance(@RequestBody BalanceCreateModel balanceModel)
-  {
-    Balance balance = new Balance(balanceModel.createDate, balanceModel.debit,
-        balanceModel.credit, balanceModel.debit - balanceModel.credit);
+  public void addBalance(@RequestBody BalanceCreateModel balanceModel) {
+    Balance balance = new Balance(balanceModel.createDate, balanceModel.debit, balanceModel.credit,
+      balanceModel.debit - balanceModel.credit);
 
     balanceService.addBalance(balance);
   }
 
   @DeleteMapping("{id}")
-  public void deleteBalance(@PathVariable("id") int id)
-  {
-    try
-    {
+  public void deleteBalance(@PathVariable("id") int id) {
+    try {
       balanceService.deleteBalance(id);
     }
-    catch(BalanceNotFoundException e)
-    {
+    catch(BalanceNotFoundException e) {
       throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Balance not found");
     }
   }
 
   @GetMapping("/all")
-  public ResponseEntity<List<Balance>> getAllBalances()
-  {
+  public ResponseEntity<List<Balance>> getAllBalances() {
     List<Balance> list = balanceService.listBalances();
     return new ResponseEntity<>(list, HttpStatus.OK);
   }
 
   @GetMapping()
-  public ResponseEntity<List<Balance>> getBalanceWithFilter(@RequestParam @DateTimeFormat(pattern="yyyy-MM-dd") Optional<Date> from,
-                                                           @RequestParam @DateTimeFormat(pattern="yyyy-MM-dd") Optional<Date> to)
-  {
+  public ResponseEntity<List<Balance>> getBalanceWithFilter(
+    @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Optional<Date> from,
+    @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Optional<Date> to) {
     FilterModel filter = new FilterModel(to, from);
 
     List<Balance> list = balanceService.getBalanceWithFilter(filter);

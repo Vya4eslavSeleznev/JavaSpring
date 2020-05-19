@@ -16,8 +16,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ArticleServiceImpl implements ArticleService
-{
+public class ArticleServiceImpl implements ArticleService {
   @Autowired
   private ArticleRepository articleRepository;
 
@@ -28,31 +27,27 @@ public class ArticleServiceImpl implements ArticleService
   private EntityManager entityManager;
 
   @Override
-  public void addArticle(Article article)
-  {
+  public void addArticle(Article article) {
     articleRepository.save(article);
   }
 
   @Override
-  public void deleteArticle(int id)
-  {
+  public void deleteArticle(int id) {
     Optional<Article> article = articleRepository.findById(id);
 
-    if (!article.isPresent())
+    if(!article.isPresent())
       throw new ArticleNotFoundException("Article not found");
 
     articleRepository.delete(article.get());
   }
 
   @Override
-  public List<Article> listArticles()
-  {
+  public List<Article> listArticles() {
     return (List<Article>) articleRepository.findAll();
   }
 
   @Override
-  public List<Operation> getCreditForCategory(int id)
-  {
+  public List<Operation> getCreditForCategory(int id) {
     CriteriaBuilder cb = entityManager.getCriteriaBuilder();
     CriteriaQuery<Operation> query = cb.createQuery(Operation.class);
     Root<Operation> operation = query.from(Operation.class);
@@ -62,7 +57,6 @@ public class ArticleServiceImpl implements ArticleService
 
     query.where(cb.equal(articleId, id));
 
-    return entityManager.createQuery(query)
-      .getResultList();
+    return entityManager.createQuery(query).getResultList();
   }
 }

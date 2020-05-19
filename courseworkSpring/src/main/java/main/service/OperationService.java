@@ -6,10 +6,12 @@ import main.model.OperationCreateModel;
 
 import java.util.List;
 
-public interface OperationService
-{
+public interface OperationService {
   void addOperation(OperationCreateModel operationModel);
+
   void deleteOperation(int id);
+
   List<Operation> listOperations();
+
   List<Operation> getOperationWithFilter(FilterModel filter);
 }

@@ -18,47 +18,39 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/operation")
-public class OperationController
-{
+public class OperationController {
   private OperationService operationService;
 
   @Autowired
-  public void setOperationService(OperationService operationService)
-  {
+  public void setOperationService(OperationService operationService) {
     this.operationService = operationService;
   }
 
   @PostMapping()
-  public void addOperation(@RequestBody OperationCreateModel operationModel)
-  {
+  public void addOperation(@RequestBody OperationCreateModel operationModel) {
     operationService.addOperation(operationModel);
   }
 
   @DeleteMapping("{id}")
-  public void deleteOperation(@PathVariable("id") int id)
-  {
-    try
-    {
+  public void deleteOperation(@PathVariable("id") int id) {
+    try {
       operationService.deleteOperation(id);
     }
-    catch(OperationNotFoundException e)
-    {
+    catch(OperationNotFoundException e) {
       throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Operation not found");
     }
   }
 
   @GetMapping("/all")
-  public ResponseEntity<List<Operation>> getAllOperations()
-  {
+  public ResponseEntity<List<Operation>> getAllOperations() {
     List<Operation> list = operationService.listOperations();
     return new ResponseEntity<>(list, HttpStatus.OK);
   }
 
   @GetMapping()
   public ResponseEntity<List<Operation>> getOperationWithFilter(
-      @RequestParam @DateTimeFormat (pattern="yyyy-MM-dd") Optional< Date > from,
-      @RequestParam @DateTimeFormat(pattern="yyyy-MM-dd") Optional<Date> to)
-  {
+    @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Optional<Date> from,
+    @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Optional<Date> to) {
     FilterModel filter = new FilterModel(to, from);
 
     List<Operation> list = operationService.getOperationWithFilter(filter);
