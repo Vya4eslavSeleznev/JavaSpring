@@ -43,6 +43,21 @@ public class Gateway {
     }
   }
 
+  public CompletableFuture<TokenModel> deleteArticle(String name, TokenModel tokenModel) throws URISyntaxException {
+    try {
+      ArticleModel articleModel = new ArticleModel(name);
+
+      return sendPost(new URI("http://localhost:8080/article"), articleModel, tokenModel.getToken()).thenApply(body -> {
+        Gson gson = new Gson();
+
+        return gson.fromJson(body, TokenModel.class);
+      });
+    }
+    catch(Exception e) {
+      throw new URISyntaxException("", "");
+    }
+  }
+
   public CompletableFuture<TokenModel> addBalance(Date createDate, double debit, double credit,
                                                   TokenModel tokenModel) throws URISyntaxException {
     try {
@@ -81,8 +96,17 @@ public class Gateway {
     String requestBody = gson.toJson(body);
 
     HttpRequest.Builder builder = getBuilder(uri, token).header("Content-Type", "application/json");
-
     HttpRequest request = builder.POST(HttpRequest.BodyPublishers.ofString(requestBody)).build();
+
+    return handleRequest(request);
+  }
+
+  private <TBody> CompletableFuture<String> sendDelete(URI uri, TBody body, String token) {
+    Gson gson = new Gson();
+    String requestBody = gson.toJson(body);
+
+    HttpRequest.Builder builder = getBuilder(uri, token).header("Content-Type", "application/json");
+    HttpRequest request = builder.DELETE().build();
 
     return handleRequest(request);
   }
