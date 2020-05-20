@@ -3,6 +3,8 @@ package coursework;
 import api.*;
 
 import javax.swing.*;
+import javax.swing.event.AncestorEvent;
+import javax.swing.event.AncestorListener;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.table.DefaultTableModel;
@@ -71,6 +73,7 @@ public class Menu {
   private JTable showAllOperationTable;
   private JTable operationFilterTable;
 
+  private JLabel errorAddArticleLabel;
   private JLabel errorDeleteArticleLabel;
   private JLabel errorArticleFilterLabel;
 
@@ -136,19 +139,16 @@ public class Menu {
     addArticleButton.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
-        /*articleName = addArticleTextField.getText();
-        articleId = 123;
-        reloadArticleTable(addArticleTable, modelForArticle, articleId, articleName);*/
-
-        String articleName = addArticleTextField.getText();
         Loader loader = new Loader(loaderFrame);
+        String name = addArticleTextField.getText();
 
         try {
-          gateway.addArticle(articleName, tokenModel.getToken()).exceptionally(exception -> {
+          gateway.addArticle(addArticleTextField.getText(), tokenModel.getToken()).exceptionally(exception -> {
             loaderFrame.dispose();
             return null;
           }).thenAccept(model -> {
             loaderFrame.dispose();
+            showAllArticle(addArticleTable);
           });
         }
         catch(URISyntaxException ex) {
@@ -174,7 +174,7 @@ public class Menu {
             return null;
           }).thenAccept(model -> {
             loaderFrame.dispose();
-            //загрузить таблицу в UI. Хреново работает loader
+            showAllArticle(deleteArticleTable);
           });
         }
         catch(URISyntaxException ex) {
@@ -187,10 +187,10 @@ public class Menu {
     });
   }
 
-  private void showAllArticle() {
+  private void showAllArticle(JTable table) {
     try {
       gateway.getArticle(tokenModel).thenApply(listArticle -> {
-        reloadTableArticle(getDefaultDataModelForArticle(), listArticle);
+        reloadTableArticle(table, getDefaultDataModelForArticle(), listArticle);
 
         return listArticle;
       });
@@ -256,6 +256,7 @@ public class Menu {
             return null;
           }).thenAccept(model -> {
             loaderFrame.dispose();
+            showAllBalance(addBalanceTable);
           });
         }
         catch(URISyntaxException ex) {
@@ -283,6 +284,7 @@ public class Menu {
             return null;
           }).thenAccept(model -> {
             loaderFrame.dispose();
+            showAllBalance(deleteBalanceTable);
           });
         }
         catch(URISyntaxException ex) {
@@ -294,10 +296,10 @@ public class Menu {
     });
   }
 
-  private void showAllBalance() {
+  private void showAllBalance(JTable table) {
     try {
       gateway.getBalance(tokenModel).thenApply(listBalance -> {
-        reloadTableBalance(showAllBalanceTable, getDefaultDataModelForBalance(), listBalance);
+        reloadTableBalance(table, getDefaultDataModelForBalance(), listBalance);
 
         return listBalance;
       });
@@ -370,6 +372,7 @@ public class Menu {
               return null;
             }).thenAccept(model -> {
             loaderFrame.dispose();
+            showAllOperation(addOperationTable);
           });
         }
         catch(URISyntaxException ex) {
@@ -399,6 +402,7 @@ public class Menu {
             return null;
           }).thenAccept(model -> {
             loaderFrame.dispose();
+            showAllOperation(deleteOperationTable);
           });
         }
         catch(URISyntaxException ex) {
@@ -410,10 +414,10 @@ public class Menu {
     });
   }
 
-  private void showAllOperation() {
+  private void showAllOperation(JTable table) {
     try {
       gateway.getOperation(tokenModel).thenApply(listOperation -> {
-        reloadTableOperation(showAllOperationTable, getDefaultDataModelForOperation(), listOperation);
+        reloadTableOperation(table, getDefaultDataModelForOperation(), listOperation);
 
         return listOperation;
       });
@@ -478,12 +482,12 @@ public class Menu {
     return model;
   }
 
-  private void reloadTableArticle(DefaultTableModel model, ArrayList<ArticleModelGet> arr) {
+  private void reloadTableArticle(JTable table, DefaultTableModel model, ArrayList<ArticleModelGet> arr) {
     for(int i = 0; i < arr.size(); ++i) {
       model.addRow(new Object[] {arr.get(i).getId(), arr.get(i).getName()});
     }
 
-    showAllArticleTable.setModel(model);
+    table.setModel(model);
   }
 
   private void reloadTableBalance(JTable table, DefaultTableModel model, ArrayList<BalanceModelGet> arr) {
