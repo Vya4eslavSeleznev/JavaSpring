@@ -11,7 +11,7 @@ public class OperationModel {
 
   public OperationModel(int articleId, double debit, double credit, Date createDate, int balanceId)
   {
-    this.createDate = createDate;
+    this.articleId = articleId;
     this.debit = debit;
     this.credit = credit;
     this.createDate = createDate;

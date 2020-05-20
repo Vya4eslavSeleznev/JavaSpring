@@ -155,8 +155,6 @@ public class Menu {
   }
 
   private void addArticle() {
-    DefaultTableModel modelForArticle = getDefaultDataModelForArticle();
-
     addArticleButton.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
@@ -168,37 +166,48 @@ public class Menu {
         Loader loader = new Loader(loaderFrame);
 
         try {
-          gateway.addArticle(articleName, tokenModel).exceptionally(exception -> {
+          gateway.addArticle(articleName, tokenModel.getToken()).exceptionally(exception -> {
             loaderFrame.dispose();
             return null;
           }).thenAccept(model -> {
-            if(model == null)
-              return;
-
             loaderFrame.dispose();
-            //загрузить таблицу в UI. Хреново работает loader
           });
         }
         catch(URISyntaxException ex) {
           ex.printStackTrace();
         }
 
-
-
+        addArticleTextField.setText("");
       }
     });
-  }
+  } //РАБОТАЕТ
 
   private void deleteArticle() {
-    DefaultTableModel modelForArticle = getDefaultDataModelForArticle();
-
     deleteArticleButton.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
+        errorDeleteArticleLabel.setText("");
+        String id = deleteArticleTextField.getText();
+        Loader loader = new Loader(loaderFrame);
 
+        try {
+          gateway.delete("http://localhost:8080/article/", id, tokenModel).exceptionally(exception -> {
+            loaderFrame.dispose();
+            return null;
+          }).thenAccept(model -> {
+            loaderFrame.dispose();
+            //загрузить таблицу в UI. Хреново работает loader
+          });
+        }
+        catch(URISyntaxException ex) {
+          //ex.printStackTrace();
+          errorDeleteArticleLabel.setText("Incorrect parameters");
+        }
+
+        deleteArticleTextField.setText("");
       }
     });
-  }
+  } //РАБОТАЕТ
 
   private void showAllArticle() {
 
@@ -217,35 +226,22 @@ public class Menu {
     addBalanceButton.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
-
-        errorAddBalanceLabel.setText("test");
-
-
-
+        errorAddBalanceLabel.setText("");
         Date createDate = null;
-        String date = addBalanceDateTextField.getText();
 
         try {
-          createDate = new SimpleDateFormat("yyyy-MM-dd").parse(date);
+          createDate = new SimpleDateFormat("yyyy-MM-dd").parse(addBalanceDateTextField.getText());
         }
         catch(ParseException ex) {
           errorAddBalanceLabel.setText("Incorrect parameters");
         }
-        catch(NullPointerException ex) {
-          errorAddBalanceLabel.setText("Incorrect parameters");
-        }
 
-        String debitString = addBalanceDebitTextField.getText();
-        String creditString = addBalanceCreditTextField.getText();
         double debit = 0;
         double credit = 0;
 
         try {
-          debit = Double.parseDouble(debitString);
-          credit = Double.parseDouble(creditString);
-        }
-        catch(NullPointerException ex) {
-          errorAddBalanceLabel.setText("Incorrect parameters");
+          debit = Double.parseDouble(addBalanceDebitTextField.getText());
+          credit = Double.parseDouble(addBalanceCreditTextField.getText());
         }
         catch(NumberFormatException ex) {
           errorAddBalanceLabel.setText("Incorrect parameters");
@@ -253,37 +249,50 @@ public class Menu {
 
         Loader loader = new Loader(loaderFrame);
 
-
         try {
-          gateway.addBalance(createDate, debit, credit, tokenModel).exceptionally(exception -> {
+          gateway.addBalance(createDate, debit, credit, tokenModel.getToken()).exceptionally(exception -> {
             loaderFrame.dispose();
+            System.out.println(exception.toString());
             return null;
           }).thenAccept(model -> {
-            if(model == null)
-              return;
-
             loaderFrame.dispose();
-            //загрузить таблицу в UI. Хреново работает loader
           });
         }
         catch(URISyntaxException ex) {
           errorAddBalanceLabel.setText("Incorrect parameters");
         }
 
-
-
+        addBalanceDateTextField.setText("");
+        addBalanceDebitTextField.setText("");
+        addBalanceCreditTextField.setText("");
       }
     });
-  }
+  } //РАБОТАЕТ
 
   private void deleteBalance() {
     deleteBalanceButton.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
+        errorDeleteArticleLabel.setText("");
+        String id = deleteBalanceTextField.getText();
+        Loader loader = new Loader(loaderFrame);
 
+        try {
+          gateway.delete("http://localhost:8080/balance/", id, tokenModel).exceptionally(exception -> {
+            loaderFrame.dispose();
+            return null;
+          }).thenAccept(model -> {
+            loaderFrame.dispose();
+          });
+        }
+        catch(URISyntaxException ex) {
+          errorDeleteArticleLabel.setText("Incorrect parameters");
+        }
+
+        deleteBalanceTextField.setText("");
       }
     });
-  }
+  } //РАБОТАЕТ
 
   private void showAllBalance() {
 
@@ -302,35 +311,27 @@ public class Menu {
     addOperationButton.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
+        errorAddOperationLabel.setText("");
         Date createDate = null;
-        String date = addOperationDateTextField.getText();
 
         try {
-          createDate = new SimpleDateFormat("yyyy-MM-dd").parse(date);
+          createDate = new SimpleDateFormat("yyyy-MM-dd").parse(addOperationDateTextField.getText());
         }
         catch(ParseException ex) {
           errorAddOperationLabel.setText("Incorrect parameters");
         }
-        catch(NullPointerException ex) {
-          errorAddOperationLabel.setText("Incorrect parameters");
-        }
 
-        String debitString = addOperationDebitTextField.getText();
-        String creditString = addOperationCreditTextField.getText();
         double debit = 0;
         double credit = 0;
         int articleId = 0;
         int balanceId = 0;
 
         try {
-          debit = Double.parseDouble(debitString);
-          credit = Double.parseDouble(creditString);
+          debit = Double.parseDouble(addOperationDebitTextField.getText());
+          credit = Double.parseDouble(addOperationCreditTextField.getText());
 
           articleId = Integer.parseInt(addOperationArtIdTextField.getText());
           balanceId = Integer.parseInt(addOperationBalIdTextField.getText());
-        }
-        catch(NullPointerException ex) {
-          errorAddOperationLabel.setText("Incorrect parameters");
         }
         catch(NumberFormatException ex) {
           errorAddOperationLabel.setText("Incorrect parameters");
@@ -339,40 +340,50 @@ public class Menu {
         Loader loader = new Loader(loaderFrame);
 
         try {
-          gateway.addOperation(articleId, debit, credit, createDate, balanceId, tokenModel).exceptionally(exception -> {
+          gateway.addOperation(articleId, debit, credit, createDate, balanceId, tokenModel.getToken()).exceptionally(exception -> {
             loaderFrame.dispose();
             return null;
           }).thenAccept(model -> {
-            if(model == null)
-              return;
-
             loaderFrame.dispose();
-            //загрузить таблицу в UI. Хреново работает loader
           });
         }
         catch(URISyntaxException ex) {
           errorAddOperationLabel.setText("Incorrect parameters");
         }
 
-
-
-
-
-
-
-
+        addOperationDateTextField.setText("");
+        addOperationDebitTextField.setText("");
+        addOperationCreditTextField.setText("");
+        addOperationArtIdTextField.setText("");
+        addOperationBalIdTextField.setText("");
       }
     });
-  }
+  } //РАБОТАЕТ
 
   private void deleteOperation() {
     deleteOperationButton.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
+        errorDeleteOperationLabel.setText("");
+        String id = deleteOperationTextField.getText();
+        Loader loader = new Loader(loaderFrame);
 
+        try {
+          gateway.delete("http://localhost:8080/operation/", id, tokenModel).exceptionally(exception -> {
+            loaderFrame.dispose();
+            return null;
+          }).thenAccept(model -> {
+            loaderFrame.dispose();
+          });
+        }
+        catch(URISyntaxException ex) {
+          errorDeleteOperationLabel.setText("Incorrect parameters");
+        }
+
+        deleteOperationTextField.setText("");
       }
     });
-  }
+  } //РАБОТАЕТ
 
   private void showAllOperation() {
 
