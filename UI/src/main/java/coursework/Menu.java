@@ -224,10 +224,23 @@ public class Menu {
     articleFilterButton.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
-        showAllArticle();
+        errorArticleFilterLabel.setText("");
+
+        try {
+          gateway.getArticleFilter(filterArticleTextField.getText(), tokenModel).thenApply(listArticle -> {
+            reloadTableOperation(filterArticleTable, getDefaultDataModelForOperation(), listArticle);
+
+            return listArticle;
+          });
+        }
+        catch(URISyntaxException ex) {
+          errorArticleFilterLabel.setText("Incorrect parameters");
+        }
+
+        filterArticleTextField.setText("");
       }
     });
-  }
+  } //РАБОТАЕТ
 
   private void addBalance() {
     addBalanceButton.addActionListener(new ActionListener() {
@@ -405,7 +418,7 @@ public class Menu {
   private void showAllOperation() {
     try {
       gateway.getOperation(tokenModel).thenApply(listOperation -> {
-        reloadTableOperation(getDefaultDataModelForOperation(), listOperation);
+        reloadTableOperation(showAllOperationTable, getDefaultDataModelForOperation(), listOperation);
 
         return listOperation;
       });
@@ -479,13 +492,13 @@ public class Menu {
     showAllBalanceTable.setModel(model);
   }
 
-  private void reloadTableOperation(DefaultTableModel model, ArrayList<OperationModelGet> arr) {
+  private void reloadTableOperation(JTable table, DefaultTableModel model, ArrayList<OperationModelGet> arr) {
     for(int i = 0; i < arr.size(); ++i) {
       model.addRow(new Object[] {arr.get(i).getId(), arr.get(i).getArticleId(), arr.get(i).getDebit(), arr.get(
         i).getCredit(), arr.get(i).getCreateDate(), arr.get(i).getBalanceId()});
     }
 
-    showAllOperationTable.setModel(model);
+    table.setModel(model);
   }
 
   public TokenModel getTokenModel() {

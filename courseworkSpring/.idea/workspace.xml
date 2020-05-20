@@ -2,15 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="88a6bfe1-1274-47ad-9876-9cb833b429ac" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../UI/src/main/java/api/ArticleModelGet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UI/src/main/java/api/ArticleModelGet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UI/src/main/java/api/ArticleModelPost.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UI/src/main/java/api/ArticleModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../UI/src/main/java/api/Gateway.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UI/src/main/java/api/Gateway.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../UI/src/main/java/coursework/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UI/src/main/java/coursework/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UI/target/classes/api/ArticleModelGet.class" beforeDir="false" afterPath="$PROJECT_DIR$/../UI/target/classes/api/ArticleModelGet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UI/target/classes/api/ArticleModelPost.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../UI/target/classes/api/Gateway.class" beforeDir="false" afterPath="$PROJECT_DIR$/../UI/target/classes/api/Gateway.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UI/target/classes/coursework/Menu$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../UI/target/classes/coursework/Menu$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UI/target/classes/coursework/Menu$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/../UI/target/classes/coursework/Menu$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../UI/target/classes/coursework/Menu$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/../UI/target/classes/coursework/Menu$3.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../UI/target/classes/coursework/Menu$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/../UI/target/classes/coursework/Menu$4.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../UI/target/classes/coursework/Menu$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/../UI/target/classes/coursework/Menu$5.class" afterDir="false" />

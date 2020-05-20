@@ -126,6 +126,24 @@ public class Gateway {
     }
   }
 
+  public CompletableFuture<ArrayList<OperationModelGet>> getArticleFilter(String id,
+                                                                          TokenModel tokenModel) throws URISyntaxException {
+    try {
+      return sendGet(new URI("http://localhost:8080/article/" + id), tokenModel.getToken())
+        .thenApply(response -> {
+          Gson gson = new Gson();
+          Type listType = new TypeToken<ArrayList<OperationModelGet>>(){}.getType();
+
+          return gson.fromJson(response, listType);
+        });
+    }
+    catch(Exception e) {
+      throw new URISyntaxException("", "");
+    }
+  }
+
+
+
 
 
 
