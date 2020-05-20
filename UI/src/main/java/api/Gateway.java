@@ -2,13 +2,16 @@ package api;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Type;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.file.AccessDeniedException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionException;
@@ -33,7 +36,7 @@ public class Gateway {
 
   public CompletableFuture<Void> addArticle(String name, String token) throws URISyntaxException {
     try {
-      ArticleModelPost articleModel = new ArticleModelPost(name);
+      ArticleModel articleModel = new ArticleModel(name);
       HttpRequest request = preparePost(new URI("http://localhost:8080/article"), articleModel, token);
 
       return handleRequestWithoutResponseBody(request);
@@ -78,13 +81,50 @@ public class Gateway {
     }
   }
 
+  public CompletableFuture<ArrayList<ArticleModelGet>> getArticle(TokenModel tokenModel) throws URISyntaxException {
+    try {
+      return sendGet(new URI("http://localhost:8080/article"), tokenModel.getToken())
+        .thenApply(response -> {
+          Gson gson = new Gson();
+          Type listType = new TypeToken<ArrayList<ArticleModelGet>>(){}.getType();
 
+          return gson.fromJson(response, listType);
+      });
+    }
+    catch(Exception e) {
+      throw new URISyntaxException("", "");
+    }
+  }
 
+  public CompletableFuture<ArrayList<BalanceModelGet>> getBalance(TokenModel tokenModel) throws URISyntaxException {
+    try {
+      return sendGet(new URI("http://localhost:8080/balance"), tokenModel.getToken())
+        .thenApply(response -> {
+          Gson gson = new Gson();
+          Type listType = new TypeToken<ArrayList<BalanceModelGet>>(){}.getType();
 
+          return gson.fromJson(response, listType);
+        });
+    }
+    catch(Exception e) {
+      throw new URISyntaxException("", "");
+    }
+  }
 
+  public CompletableFuture<ArrayList<OperationModelGet>> getOperation(TokenModel tokenModel) throws URISyntaxException {
+    try {
+      return sendGet(new URI("http://localhost:8080/operation"), tokenModel.getToken())
+        .thenApply(response -> {
+          Gson gson = new Gson();
+          Type listType = new TypeToken<ArrayList<OperationModelGet>>(){}.getType();
 
-
-
+          return gson.fromJson(response, listType);
+        });
+    }
+    catch(Exception e) {
+      throw new URISyntaxException("", "");
+    }
+  }
 
 
 
@@ -109,7 +149,6 @@ public class Gateway {
     HttpRequest request = builder.GET().build();
     return handleRequestWithResponseBody(request);
   }
-
 
   private HttpRequest.Builder getBuilder(URI uri, String token) {
     HttpRequest.Builder builder = HttpRequest.newBuilder().

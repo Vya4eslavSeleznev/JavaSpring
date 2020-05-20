@@ -1,7 +1,6 @@
 package coursework;
 
-import api.Gateway;
-import api.TokenModel;
+import api.*;
 
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
@@ -12,7 +11,10 @@ import java.awt.event.ActionListener;
 import java.net.URISyntaxException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 
 public class Menu {
   private JPanel rootPanel;
@@ -98,11 +100,11 @@ public class Menu {
     frame.setVisible(true);
 
     DefaultTableModel modelForArticle = getDefaultDataModelForArticle();
-    DefaultTableModel modelForArticleFilter = getDefaultDataModelForArticleFilter();
+    DefaultTableModel model = getDefaultDataModelForOperation();
     addArticleTable.setModel(modelForArticle);
     deleteArticleTable.setModel(modelForArticle);
     showAllArticleTable.setModel(modelForArticle);
-    filterArticleTable.setModel(modelForArticleFilter);
+    filterArticleTable.setModel(model);
 
     DefaultTableModel modelForBalance = getDefaultDataModelForBalance();
     addBalanceTable.setModel(modelForBalance);
@@ -110,14 +112,10 @@ public class Menu {
     showAllBalanceTable.setModel(modelForBalance);
     filterBalanceTable.setModel(modelForBalance);
 
-    DefaultTableModel modelForOperation = getDefaultDataModelForOperation();
-    addOperationTable.setModel(modelForOperation);
-    deleteOperationTable.setModel(modelForOperation);
-    showAllOperationTable.setModel(modelForOperation);
-    operationFilterTable.setModel(modelForOperation);
-
-    //необходимо загрузить все данные в таблицы
-
+    addOperationTable.setModel(model);
+    deleteOperationTable.setModel(model);
+    showAllOperationTable.setModel(model);
+    operationFilterTable.setModel(model);
   }
 
   public void menuImplementation() {
@@ -210,14 +208,23 @@ public class Menu {
   } //РАБОТАЕТ
 
   private void showAllArticle() {
+    try {
+      gateway.getArticle(tokenModel).thenApply(listArticle -> {
+        reloadTableArticle(getDefaultDataModelForArticle(), listArticle);
 
-  }
+        return listArticle;
+      });
+    }
+    catch(URISyntaxException ex) {
+      ex.printStackTrace();
+    }
+  } //РАБОТАЕТ
 
   private void articleFilter() {
     articleFilterButton.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
-
+        showAllArticle();
       }
     });
   }
@@ -295,14 +302,23 @@ public class Menu {
   } //РАБОТАЕТ
 
   private void showAllBalance() {
+    try {
+      gateway.getBalance(tokenModel).thenApply(listBalance -> {
+        reloadTableBalance(getDefaultDataModelForBalance(), listBalance);
 
-  }
+        return listBalance;
+      });
+    }
+    catch(URISyntaxException ex) {
+      ex.printStackTrace();
+    }
+  } //РАБОТАЕТ
 
   private void balanceFilter() {
     balanceFilterButton.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
-
+        showAllBalance();
       }
     });
   }
@@ -340,10 +356,11 @@ public class Menu {
         Loader loader = new Loader(loaderFrame);
 
         try {
-          gateway.addOperation(articleId, debit, credit, createDate, balanceId, tokenModel.getToken()).exceptionally(exception -> {
-            loaderFrame.dispose();
-            return null;
-          }).thenAccept(model -> {
+          gateway.addOperation(articleId, debit, credit, createDate, balanceId, tokenModel.getToken()).exceptionally(
+            exception -> {
+              loaderFrame.dispose();
+              return null;
+            }).thenAccept(model -> {
             loaderFrame.dispose();
           });
         }
@@ -386,33 +403,38 @@ public class Menu {
   } //РАБОТАЕТ
 
   private void showAllOperation() {
+    try {
+      gateway.getOperation(tokenModel).thenApply(listOperation -> {
+        reloadTableOperation(getDefaultDataModelForOperation(), listOperation);
 
-  }
+        return listOperation;
+      });
+    }
+    catch(URISyntaxException ex) {
+      ex.printStackTrace();
+    }
+  } //РАБОТАЕТ
 
   private void operationFilter() {
     operationFilterButton.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
-
+        showAllOperation();
       }
     });
   }
+
+
+
+
+
+
 
 
   private DefaultTableModel getDefaultDataModelForArticle() {
     DefaultTableModel model = new DefaultTableModel();
     model.addColumn("Id");
     model.addColumn("Name");
-
-    return model;
-  }
-
-  private DefaultTableModel getDefaultDataModelForArticleFilter() {
-    DefaultTableModel model = new DefaultTableModel();
-    model.addColumn("ArticleId");
-    model.addColumn("Debit");
-    model.addColumn("Credit");
-    model.addColumn("CreateDate");
 
     return model;
   }
@@ -434,28 +456,36 @@ public class Menu {
     model.addColumn("ArticleId");
     model.addColumn("Debit");
     model.addColumn("Credit");
-    model.addColumn("CreateDate");
     model.addColumn("BalanceId");
+    model.addColumn("CreateDate");
 
     return model;
   }
 
-  private void reloadArticleTable(JTable table, DefaultTableModel model, int id, String name) {
+  private void reloadTableArticle(DefaultTableModel model, ArrayList<ArticleModelGet> arr) {
+    for(int i = 0; i < arr.size(); ++i) {
+      model.addRow(new Object[] {arr.get(i).getId(), arr.get(i).getName()});
+    }
 
-    model.addRow(new Object[] {id, name});
-    table.setModel(model);
+    showAllArticleTable.setModel(model);
   }
 
-  private void selectTabArticle() {
+  private void reloadTableBalance(DefaultTableModel model, ArrayList<BalanceModelGet> arr) {
+    for(int i = 0; i < arr.size(); ++i) {
+      model.addRow(new Object[] {arr.get(i).getId(), arr.get(i).getCreateDate(), arr.get(i).getDebit(), arr.get(
+        i).getCredit(), arr.get(i).getAmount()});
+    }
 
+    showAllBalanceTable.setModel(model);
   }
 
-  private void selectTabBalance() {
+  private void reloadTableOperation(DefaultTableModel model, ArrayList<OperationModelGet> arr) {
+    for(int i = 0; i < arr.size(); ++i) {
+      model.addRow(new Object[] {arr.get(i).getId(), arr.get(i).getArticleId(), arr.get(i).getDebit(), arr.get(
+        i).getCredit(), arr.get(i).getCreateDate(), arr.get(i).getBalanceId()});
+    }
 
-  }
-
-  private void selectTabOperation() {
-
+    showAllOperationTable.setModel(model);
   }
 
   public TokenModel getTokenModel() {

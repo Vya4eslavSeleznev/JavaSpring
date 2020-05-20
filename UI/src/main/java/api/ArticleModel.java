@@ -1,9 +1,9 @@
 package api;
 
-public class ArticleModelPost {
+public class ArticleModel {
   private String name;
 
-  public ArticleModelPost(String name) {
+  public ArticleModel(String name) {
     this.name = name;
   }
 
