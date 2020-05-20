@@ -158,11 +158,21 @@ public class Gateway {
     }
   }
 
+  public CompletableFuture<ArrayList<OperationModelGet>> getOperationFilter(String from, String to,
+                                                                          TokenModel tokenModel) throws URISyntaxException {
+    try {
+      return sendGet(new URI("http://localhost:8080/operation?from=" + from + "&to=" + to), tokenModel.getToken())
+        .thenApply(response -> {
+          Gson gson = new Gson();
+          Type listType = new TypeToken<ArrayList<OperationModelGet>>(){}.getType();
 
-
-
-
-
+          return gson.fromJson(response, listType);
+        });
+    }
+    catch(Exception e) {
+      throw new URISyntaxException("", "");
+    }
+  }
 
   private <TBody> HttpRequest preparePost(URI uri, TBody body, String token) {
     Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();

@@ -334,22 +334,22 @@ public class Menu {
         errorBalanceFilterLabel.setText("");
 
         try {
-          gateway.getBalanceFilter(filterBalanceFromTextField.getText(),
-              filterBalanceToTextField.getText(), tokenModel).thenApply(listArticle -> {
-            reloadTableBalance(filterBalanceTable, getDefaultDataModelForBalance(), listArticle);
+        gateway.getBalanceFilter(filterBalanceFromTextField.getText(),
+          filterBalanceToTextField.getText(), tokenModel).thenApply(listArticle -> {
+          reloadTableBalance(filterBalanceTable, getDefaultDataModelForBalance(), listArticle);
 
-            return listArticle;
-          });
-        }
+          return listArticle;
+        });
+      }
         catch(URISyntaxException ex) {
-          errorBalanceFilterLabel.setText("Incorrect parameters");
-        }
+        errorBalanceFilterLabel.setText("Incorrect parameters");
+      }
 
         filterBalanceFromTextField.setText("");
         filterBalanceToTextField.setText("");
-      }
+    }
     });
-  }
+  } //РАБОТАЕТ
 
   private void addOperation() {
     addOperationButton.addActionListener(new ActionListener() {
@@ -447,17 +447,25 @@ public class Menu {
     operationFilterButton.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
-        showAllOperation();
+        errorOperationFilterLabel.setText("");
+
+        try {
+          gateway.getOperationFilter(operationFilterDateFromTextField.getText(),
+            operationFilterDateToTextField.getText(), tokenModel).thenApply(listArticle -> {
+            reloadTableOperation(operationFilterTable, getDefaultDataModelForOperation(), listArticle);
+
+            return listArticle;
+          });
+        }
+        catch(URISyntaxException ex) {
+          errorOperationFilterLabel.setText("Incorrect parameters");
+        }
+
+        operationFilterDateFromTextField.setText("");
+        operationFilterDateToTextField.setText("");
       }
     });
-  }
-
-
-
-
-
-
-
+  } //РАБОТАЕТ
 
   private DefaultTableModel getDefaultDataModelForArticle() {
     DefaultTableModel model = new DefaultTableModel();
