@@ -119,26 +119,6 @@ public class Menu {
   }
 
   public void menuImplementation() {
-    /*System.out.println(mainTabbedPane.getTitleAt(0));
-    System.out.println(mainTabbedPane.getTitleAt(1));
-    System.out.println(mainTabbedPane.getTitleAt(2));
-    System.out.println("================================");
-    System.out.println(articleTabbedPane.getTitleAt(0));
-    System.out.println(articleTabbedPane.getTitleAt(1));
-    System.out.println(articleTabbedPane.getTitleAt(2));
-    System.out.println(articleTabbedPane.getTitleAt(3));
-    System.out.println("================================");
-    System.out.println(balanceTabbedPane.getTitleAt(0));
-    System.out.println(balanceTabbedPane.getTitleAt(1));
-    System.out.println(balanceTabbedPane.getTitleAt(2));
-    System.out.println(balanceTabbedPane.getTitleAt(3));
-    System.out.println("================================");
-    System.out.println(operationTabbedPane.getTitleAt(0));
-    System.out.println(operationTabbedPane.getTitleAt(1));
-    System.out.println(operationTabbedPane.getTitleAt(2));
-    System.out.println(operationTabbedPane.getTitleAt(3));*/
-
-
     addArticle();
     deleteArticle();
     articleFilter();
@@ -178,7 +158,7 @@ public class Menu {
         addArticleTextField.setText("");
       }
     });
-  } //РАБОТАЕТ
+  }
 
   private void deleteArticle() {
     deleteArticleButton.addActionListener(new ActionListener() {
@@ -205,7 +185,7 @@ public class Menu {
         deleteArticleTextField.setText("");
       }
     });
-  } //РАБОТАЕТ
+  }
 
   private void showAllArticle() {
     try {
@@ -218,7 +198,7 @@ public class Menu {
     catch(URISyntaxException ex) {
       ex.printStackTrace();
     }
-  } //РАБОТАЕТ
+  }
 
   private void articleFilter() {
     articleFilterButton.addActionListener(new ActionListener() {
@@ -240,7 +220,7 @@ public class Menu {
         filterArticleTextField.setText("");
       }
     });
-  } //РАБОТАЕТ
+  }
 
   private void addBalance() {
     addBalanceButton.addActionListener(new ActionListener() {
@@ -287,13 +267,13 @@ public class Menu {
         addBalanceCreditTextField.setText("");
       }
     });
-  } //РАБОТАЕТ
+  }
 
   private void deleteBalance() {
     deleteBalanceButton.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
-        errorDeleteArticleLabel.setText("");
+        errorDeleteBalanceLabel.setText("");
         String id = deleteBalanceTextField.getText();
         Loader loader = new Loader(loaderFrame);
 
@@ -306,13 +286,13 @@ public class Menu {
           });
         }
         catch(URISyntaxException ex) {
-          errorDeleteArticleLabel.setText("Incorrect parameters");
+          errorDeleteBalanceLabel.setText("Incorrect parameters");
         }
 
         deleteBalanceTextField.setText("");
       }
     });
-  } //РАБОТАЕТ
+  }
 
   private void showAllBalance() {
     try {
@@ -325,7 +305,7 @@ public class Menu {
     catch(URISyntaxException ex) {
       ex.printStackTrace();
     }
-  } //РАБОТАЕТ
+  }
 
   private void balanceFilter() {
     balanceFilterButton.addActionListener(new ActionListener() {
@@ -349,7 +329,7 @@ public class Menu {
         filterBalanceToTextField.setText("");
     }
     });
-  } //РАБОТАЕТ
+  }
 
   private void addOperation() {
     addOperationButton.addActionListener(new ActionListener() {
@@ -403,7 +383,7 @@ public class Menu {
         addOperationBalIdTextField.setText("");
       }
     });
-  } //РАБОТАЕТ
+  }
 
   private void deleteOperation() {
     deleteOperationButton.addActionListener(new ActionListener() {
@@ -428,7 +408,7 @@ public class Menu {
         deleteOperationTextField.setText("");
       }
     });
-  } //РАБОТАЕТ
+  }
 
   private void showAllOperation() {
     try {
@@ -441,7 +421,7 @@ public class Menu {
     catch(URISyntaxException ex) {
       ex.printStackTrace();
     }
-  } //РАБОТАЕТ
+  }
 
   private void operationFilter() {
     operationFilterButton.addActionListener(new ActionListener() {
@@ -465,7 +445,7 @@ public class Menu {
         operationFilterDateToTextField.setText("");
       }
     });
-  } //РАБОТАЕТ
+  }
 
   private DefaultTableModel getDefaultDataModelForArticle() {
     DefaultTableModel model = new DefaultTableModel();
