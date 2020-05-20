@@ -142,6 +142,23 @@ public class Gateway {
     }
   }
 
+  public CompletableFuture<ArrayList<BalanceModelGet>> getBalanceFilter(String from, String to,
+                                                                          TokenModel tokenModel) throws URISyntaxException {
+    try {
+      return sendGet(new URI("http://localhost:8080/balance?from=" + from + "&to=" + to), tokenModel.getToken())
+        .thenApply(response -> {
+          Gson gson = new Gson();
+          Type listType = new TypeToken<ArrayList<BalanceModelGet>>(){}.getType();
+
+          return gson.fromJson(response, listType);
+        });
+    }
+    catch(Exception e) {
+      throw new URISyntaxException("", "");
+    }
+  }
+
+
 
 
 

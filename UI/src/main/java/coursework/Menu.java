@@ -317,7 +317,7 @@ public class Menu {
   private void showAllBalance() {
     try {
       gateway.getBalance(tokenModel).thenApply(listBalance -> {
-        reloadTableBalance(getDefaultDataModelForBalance(), listBalance);
+        reloadTableBalance(showAllBalanceTable, getDefaultDataModelForBalance(), listBalance);
 
         return listBalance;
       });
@@ -331,7 +331,22 @@ public class Menu {
     balanceFilterButton.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
-        showAllBalance();
+        errorBalanceFilterLabel.setText("");
+
+        try {
+          gateway.getBalanceFilter(filterBalanceFromTextField.getText(),
+              filterBalanceToTextField.getText(), tokenModel).thenApply(listArticle -> {
+            reloadTableBalance(filterBalanceTable, getDefaultDataModelForBalance(), listArticle);
+
+            return listArticle;
+          });
+        }
+        catch(URISyntaxException ex) {
+          errorBalanceFilterLabel.setText("Incorrect parameters");
+        }
+
+        filterBalanceFromTextField.setText("");
+        filterBalanceToTextField.setText("");
       }
     });
   }
@@ -483,13 +498,13 @@ public class Menu {
     showAllArticleTable.setModel(model);
   }
 
-  private void reloadTableBalance(DefaultTableModel model, ArrayList<BalanceModelGet> arr) {
+  private void reloadTableBalance(JTable table, DefaultTableModel model, ArrayList<BalanceModelGet> arr) {
     for(int i = 0; i < arr.size(); ++i) {
       model.addRow(new Object[] {arr.get(i).getId(), arr.get(i).getCreateDate(), arr.get(i).getDebit(), arr.get(
         i).getCredit(), arr.get(i).getAmount()});
     }
 
-    showAllBalanceTable.setModel(model);
+    table.setModel(model);
   }
 
   private void reloadTableOperation(JTable table, DefaultTableModel model, ArrayList<OperationModelGet> arr) {
