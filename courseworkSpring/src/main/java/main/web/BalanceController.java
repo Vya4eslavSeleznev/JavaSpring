@@ -28,8 +28,7 @@ public class BalanceController {
 
   @PostMapping()
   public void addBalance(@RequestBody BalanceCreateModel balanceModel) {
-    Balance balance = new Balance(balanceModel.createDate, balanceModel.debit, balanceModel.credit,
-      balanceModel.debit - balanceModel.credit);
+    Balance balance = new Balance(balanceModel.createDate, balanceModel.debit, balanceModel.credit);
 
     balanceService.addBalance(balance);
   }

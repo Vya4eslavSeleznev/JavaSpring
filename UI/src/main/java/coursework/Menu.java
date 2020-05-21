@@ -117,9 +117,12 @@ public class Menu {
     deleteOperationTable.setModel(model);
     showAllOperationTable.setModel(model);
     operationFilterTable.setModel(model);
+
+    close(frame);
   }
 
   public void menuImplementation() {
+    //Loader loader = new Loader(loaderFrame);
     showAllArticle(addArticleTable);
     selectMainTabbedPane();
     selectArticleTabbedPane();
@@ -148,26 +151,33 @@ public class Menu {
       @Override
       public void actionPerformed(ActionEvent e) {
         errorAddArticleLabel.setText("");
-        Loader loader = new Loader(loaderFrame);
+        //Loader loader = new Loader(loaderFrame);
+        loaderFrame.setVisible(true);
 
-        if(checkingForVoidsAndWhitespaces(addArticleTextField, errorAddArticleLabel, loaderFrame))
+        if(checkingForVoidsAndWhitespaces(addArticleTextField, errorAddArticleLabel, loaderFrame)) {
+          //loaderFrame.dispose();
+          loaderFrame.setVisible(false);
           return;
-
+        }
         try {
           gateway.addArticle(addArticleTextField.getText(), tokenModel.getToken()).exceptionally(exception -> {
             if(exception.getCause().getClass() == NotUniqueException.class) {
               errorAddArticleLabel.setText("The name is not unique");
             }
 
-            loaderFrame.dispose();
+            //loaderFrame.dispose();
+            loaderFrame.setVisible(false);
             return null;
           }).thenAccept(model -> {
-            loaderFrame.dispose();
+            //loaderFrame.dispose();
+            loaderFrame.setVisible(false);
             showAllArticle(addArticleTable);
           });
         }
         catch(URISyntaxException ex) {
           errorAddArticleLabel.setText("Incorrect parameters");
+          //loaderFrame.dispose();
+          loaderFrame.setVisible(false);
         }
 
         addArticleTextField.setText("");
@@ -180,24 +190,32 @@ public class Menu {
       @Override
       public void actionPerformed(ActionEvent e) {
         errorDeleteArticleLabel.setText("");
-        Loader loader = new Loader(loaderFrame);
+        //Loader loader = new Loader(loaderFrame);
+        loaderFrame.setVisible(true);
 
-        if(checkingForVoidsAndWhitespaces(deleteArticleTextField, errorDeleteArticleLabel, loaderFrame))
+        if(checkingForVoidsAndWhitespaces(deleteArticleTextField, errorDeleteArticleLabel, loaderFrame)) {
+          //loaderFrame.dispose();
+          loaderFrame.setVisible(false);
           return;
+        }
 
         try {
           gateway.delete("http://localhost:8080/article/", deleteArticleTextField.getText(), tokenModel).exceptionally(
             exception -> {
               noSuchElement(exception, errorDeleteArticleLabel);
-              loaderFrame.dispose();
+              loaderFrame.setVisible(false);
+              //loaderFrame.dispose();
               return null;
             }).thenAccept(model -> {
-            loaderFrame.dispose();
+            //loaderFrame.dispose();
+            loaderFrame.setVisible(false);
             showAllArticle(deleteArticleTable);
           });
         }
         catch(URISyntaxException ex) {
           errorDeleteArticleLabel.setText("Incorrect parameters");
+          loaderFrame.setVisible(false);
+          //loaderFrame.dispose();
         }
 
         deleteArticleTextField.setText("");
@@ -207,14 +225,19 @@ public class Menu {
 
   private void showAllArticle(JTable table) {
     try {
-      gateway.getArticle(tokenModel).thenApply(listArticle -> {
-        reloadTableArticle(table, getDefaultDataModelForArticle(), listArticle);
+      //Loader load = new Loader(loaderFrame);
+      loaderFrame.setVisible(true);
 
-        return listArticle;
+      gateway.getArticle(tokenModel).thenAccept(listArticle -> {
+        reloadTableArticle(table, getDefaultDataModelForArticle(), listArticle);
+        //loaderFrame.dispose();
+        loaderFrame.setVisible(false);
       });
     }
     catch(URISyntaxException ex) {
       ex.printStackTrace();
+      //loaderFrame.dispose();
+      loaderFrame.setVisible(false);
     }
   }
 
@@ -224,18 +247,23 @@ public class Menu {
       public void actionPerformed(ActionEvent e) {
         errorArticleFilterLabel.setText("");
 
-        if(checkingForVoidsAndWhitespaces(filterArticleTextField, errorArticleFilterLabel, loaderFrame))
+        if(checkingForVoidsAndWhitespaces(filterArticleTextField, errorArticleFilterLabel, loaderFrame)) {
+          //loaderFrame.dispose();
+          loaderFrame.setVisible(false);
           return;
+        }
 
         try {
           gateway.getArticleFilter(filterArticleTextField.getText(), tokenModel).thenApply(listArticle -> {
             reloadTableOperation(filterArticleTable, getDefaultDataModelForOperation(), listArticle);
-
+            loaderFrame.setVisible(false);
             return listArticle;
           });
         }
         catch(URISyntaxException ex) {
           errorArticleFilterLabel.setText("Incorrect parameters");
+          //loaderFrame.dispose();
+          loaderFrame.setVisible(false);
         }
 
         filterArticleTextField.setText("");
@@ -249,18 +277,27 @@ public class Menu {
       public void actionPerformed(ActionEvent e) {
         errorAddBalanceLabel.setText("");
         Date createDate = null;
-        Loader loader = new Loader(loaderFrame);
+        //Loader loader = new Loader(loaderFrame);
+        loaderFrame.setVisible(true);
 
         if(checkingForVoidsAndWhitespaces(addBalanceDateTextField, errorAddBalanceLabel,
           loaderFrame) || checkingForVoidsAndWhitespaces(addBalanceDebitTextField, errorAddBalanceLabel,
           loaderFrame) || checkingForVoidsAndWhitespaces(addBalanceCreditTextField, errorAddBalanceLabel,
           loaderFrame)) {
           balanceFieldSetText();
-
+          //loaderFrame.dispose();
+          loaderFrame.setVisible(false);
           return;
         }
 
-        checkingDate(createDate, addBalanceDateTextField, errorAddBalanceLabel);
+        createDate = checkingDate(addBalanceDateTextField, errorAddBalanceLabel);
+
+        if(createDate == null) {
+          errorAddBalanceLabel.setText("Incorrect date");
+          //loaderFrame.dispose();
+          loaderFrame.setVisible(false);
+          return;
+        }
 
         double debit = 0;
         double credit = 0;
@@ -271,24 +308,32 @@ public class Menu {
         }
         catch(NumberFormatException ex) {
           errorAddBalanceLabel.setText("Incorrect debit or credit");
+          //loaderFrame.dispose();
+          loaderFrame.setVisible(false);
         }
 
         if(checkingDebitAndCredit(debit, credit, errorAddBalanceLabel, loaderFrame)) {
           balanceFieldSetText();
+          //loaderFrame.dispose();
+          loaderFrame.setVisible(false);
           return;
         }
 
         try {
           gateway.addBalance(createDate, debit, credit, tokenModel.getToken()).exceptionally(exception -> {
-            loaderFrame.dispose();
-            System.out.println(exception.toString());
+            //loaderFrame.dispose();
+            //System.out.println(exception.toString());
+            loaderFrame.setVisible(false);
             return null;
           }).thenAccept(model -> {
-            loaderFrame.dispose();
+            //loaderFrame.dispose();
+            loaderFrame.setVisible(false);
             showAllBalance(addBalanceTable);
           });
         }
         catch(URISyntaxException ex) {
+          //loaderFrame.dispose();
+          loaderFrame.setVisible(false);
           errorAddBalanceLabel.setText("Incorrect parameters");
         }
 
@@ -303,22 +348,30 @@ public class Menu {
       public void actionPerformed(ActionEvent e) {
         errorDeleteBalanceLabel.setText("");
         String id = deleteBalanceTextField.getText();
-        Loader loader = new Loader(loaderFrame);
+        //Loader loader = new Loader(loaderFrame);
+        loaderFrame.setVisible(true);
 
-        if(checkingForVoidsAndWhitespaces(deleteBalanceTextField, errorDeleteBalanceLabel, loaderFrame))
+        if(checkingForVoidsAndWhitespaces(deleteBalanceTextField, errorDeleteBalanceLabel, loaderFrame)) {
+          //loaderFrame.dispose();
+          loaderFrame.setVisible(false);
           return;
+        }
 
         try {
           gateway.delete("http://localhost:8080/balance/", id, tokenModel).exceptionally(exception -> {
             noSuchElement(exception, errorDeleteBalanceLabel);
-            loaderFrame.dispose();
+            //loaderFrame.dispose();
+            loaderFrame.setVisible(false);
             return null;
           }).thenAccept(model -> {
-            loaderFrame.dispose();
+            //loaderFrame.dispose();
+            loaderFrame.setVisible(false);
             showAllBalance(deleteBalanceTable);
           });
         }
         catch(URISyntaxException ex) {
+          //loaderFrame.dispose();
+          loaderFrame.setVisible(false);
           errorDeleteBalanceLabel.setText("Incorrect parameters");
         }
 
@@ -329,14 +382,19 @@ public class Menu {
 
   private void showAllBalance(JTable table) {
     try {
-      gateway.getBalance(tokenModel).thenApply(listBalance -> {
-        reloadTableBalance(table, getDefaultDataModelForBalance(), listBalance);
+      //Loader load = new Loader(loaderFrame);
+      loaderFrame.setVisible(true);
 
-        return listBalance;
+      gateway.getBalance(tokenModel).thenAccept(listBalance -> {
+        reloadTableBalance(table, getDefaultDataModelForBalance(), listBalance);
+        //loaderFrame.dispose();
+        loaderFrame.setVisible(false);
       });
     }
     catch(URISyntaxException ex) {
       ex.printStackTrace();
+      //loaderFrame.dispose();
+      loaderFrame.setVisible(false);
     }
   }
 
@@ -345,6 +403,7 @@ public class Menu {
       @Override
       public void actionPerformed(ActionEvent e) {
         errorBalanceFilterLabel.setText("");
+        loaderFrame.setVisible(true);
         Date from = null;
         Date to = null;
 
@@ -353,22 +412,33 @@ public class Menu {
           loaderFrame)) {
           filterBalanceFromTextField.setText("");
           filterBalanceToTextField.setText("");
-
+          //loaderFrame.dispose();
+          loaderFrame.setVisible(false);
           return;
         }
 
-        checkingDate(from, filterBalanceFromTextField, errorBalanceFilterLabel);
-        checkingDate(to, filterBalanceToTextField, errorBalanceFilterLabel);
+        from = checkingDate(filterBalanceFromTextField, errorBalanceFilterLabel);
+        to = checkingDate(filterBalanceToTextField, errorBalanceFilterLabel);
+
+        if(from == null || to == null) {
+          errorBalanceFilterLabel.setText("Incorrect date");
+          //loaderFrame.dispose();
+          loaderFrame.setVisible(false);
+          return;
+        }
 
         try {
           gateway.getBalanceFilter(filterBalanceFromTextField.getText(), filterBalanceToTextField.getText(),
             tokenModel).thenApply(listArticle -> {
             reloadTableBalance(filterBalanceTable, getDefaultDataModelForBalance(), listArticle);
-
+            //loaderFrame.dispose();
+            loaderFrame.setVisible(false);
             return listArticle;
           });
         }
         catch(URISyntaxException ex) {
+          //loaderFrame.dispose();
+          loaderFrame.setVisible(false);
           errorBalanceFilterLabel.setText("Incorrect parameters");
         }
 
@@ -383,9 +453,8 @@ public class Menu {
       @Override
       public void actionPerformed(ActionEvent e) {
         errorAddOperationLabel.setText("");
-        Date createDate = null;
-
-        Loader loader = new Loader(loaderFrame);
+        //Loader loader = new Loader(loaderFrame);
+        loaderFrame.setVisible(true);
 
         if(checkingForVoidsAndWhitespaces(addOperationDateTextField, errorAddOperationLabel,
           loaderFrame) || checkingForVoidsAndWhitespaces(addOperationDebitTextField, errorAddOperationLabel,
@@ -394,11 +463,12 @@ public class Menu {
           loaderFrame) || checkingForVoidsAndWhitespaces(addOperationBalIdTextField, errorAddOperationLabel,
           loaderFrame)) {
           operationFieldSetText();
-
+          //loaderFrame.dispose();
+          loaderFrame.setVisible(false);
           return;
         }
 
-        checkingDate(createDate, addOperationDateTextField, errorAddOperationLabel);
+        Date createDate = checkingDate(addOperationDateTextField, errorAddOperationLabel);
 
         double debit = 0;
         double credit = 0;
@@ -413,11 +483,15 @@ public class Menu {
           balanceId = Integer.parseInt(addOperationBalIdTextField.getText());
         }
         catch(NumberFormatException ex) {
+          //loaderFrame.dispose();
+          loaderFrame.setVisible(false);
           errorAddOperationLabel.setText("Incorrect parameters");
         }
 
         if(checkingDebitAndCredit(debit, credit, errorAddOperationLabel, loaderFrame)) {
           operationFieldSetText();
+          //loaderFrame.dispose();
+          loaderFrame.setVisible(false);
           return;
         }
 
@@ -428,14 +502,18 @@ public class Menu {
                 errorAddOperationLabel.setText("No such element");
               }
 
-              loaderFrame.dispose();
+              //loaderFrame.dispose();
+              loaderFrame.setVisible(false);
               return null;
             }).thenAccept(model -> {
-            loaderFrame.dispose();
+            //loaderFrame.dispose();
+            loaderFrame.setVisible(false);
             showAllOperation(addOperationTable);
           });
         }
         catch(URISyntaxException ex) {
+          //loaderFrame.dispose();
+          loaderFrame.setVisible(false);
           errorAddOperationLabel.setText("Incorrect parameters");
         }
 
@@ -450,22 +528,30 @@ public class Menu {
       public void actionPerformed(ActionEvent e) {
         errorDeleteOperationLabel.setText("");
         String id = deleteOperationTextField.getText();
-        Loader loader = new Loader(loaderFrame);
+        //Loader loader = new Loader(loaderFrame);
+        loaderFrame.setVisible(true);
 
-        if(checkingForVoidsAndWhitespaces(deleteOperationTextField, errorDeleteOperationLabel, loaderFrame))
+        if(checkingForVoidsAndWhitespaces(deleteOperationTextField, errorDeleteOperationLabel, loaderFrame)) {
+          //loaderFrame.dispose();
+          loaderFrame.setVisible(false);
           return;
+        }
 
         try {
           gateway.delete("http://localhost:8080/operation/", id, tokenModel).exceptionally(exception -> {
             noSuchElement(exception, errorDeleteOperationLabel);
-            loaderFrame.dispose();
+            //loaderFrame.dispose();
+            loaderFrame.setVisible(false);
             return null;
           }).thenAccept(model -> {
-            loaderFrame.dispose();
+            //loaderFrame.dispose();
+            loaderFrame.setVisible(false);
             showAllOperation(deleteOperationTable);
           });
         }
         catch(URISyntaxException ex) {
+          //loaderFrame.dispose();
+          loaderFrame.setVisible(false);
           errorDeleteOperationLabel.setText("Incorrect parameters");
         }
 
@@ -476,14 +562,19 @@ public class Menu {
 
   private void showAllOperation(JTable table) {
     try {
-      gateway.getOperation(tokenModel).thenApply(listOperation -> {
-        reloadTableOperation(table, getDefaultDataModelForOperation(), listOperation);
+      //Loader load = new Loader(loaderFrame);
+      loaderFrame.setVisible(true);
 
-        return listOperation;
+      gateway.getOperation(tokenModel).thenAccept(listOperation -> {
+        reloadTableOperation(table, getDefaultDataModelForOperation(), listOperation);
+        //loaderFrame.dispose();
+        loaderFrame.setVisible(false);
       });
     }
     catch(URISyntaxException ex) {
-      ex.printStackTrace();
+      //loaderFrame.dispose();
+      loaderFrame.setVisible(false);
+      //ex.printStackTrace();
     }
   }
 
@@ -492,6 +583,7 @@ public class Menu {
       @Override
       public void actionPerformed(ActionEvent e) {
         errorOperationFilterLabel.setText("");
+        loaderFrame.setVisible(true);
         Date from = null;
         Date to = null;
 
@@ -500,23 +592,33 @@ public class Menu {
           loaderFrame)) {
           operationFilterDateFromTextField.setText("");
           operationFilterDateToTextField.setText("");
-
+          //loaderFrame.dispose();
+          loaderFrame.setVisible(false);
           return;
         }
 
-        checkingDate(from, operationFilterDateFromTextField, errorOperationFilterLabel);
-        checkingDate(to, operationFilterDateToTextField, errorOperationFilterLabel);
+        from = checkingDate(operationFilterDateFromTextField, errorOperationFilterLabel);
+        to = checkingDate(operationFilterDateToTextField, errorOperationFilterLabel);
 
+        if(from == null || to == null) {
+          errorOperationFilterLabel.setText("Incorrect date");
+          //loaderFrame.dispose();
+          loaderFrame.setVisible(false);
+          return;
+        }
 
         try {
           gateway.getOperationFilter(operationFilterDateFromTextField.getText(),
             operationFilterDateToTextField.getText(), tokenModel).thenApply(listArticle -> {
             reloadTableOperation(operationFilterTable, getDefaultDataModelForOperation(), listArticle);
-
+            //loaderFrame.dispose();
+            loaderFrame.setVisible(false);
             return listArticle;
           });
         }
         catch(URISyntaxException ex) {
+          //loaderFrame.dispose();
+          loaderFrame.setVisible(false);
           errorOperationFilterLabel.setText("Incorrect parameters");
         }
 
@@ -586,6 +688,8 @@ public class Menu {
   private void selectMainTabbedPane() {
     mainTabbedPane.addChangeListener(new ChangeListener() {
       public void stateChanged(ChangeEvent e) {
+
+
         showAllArticle(addArticleTable);
         showAllBalance(addBalanceTable);
         showAllOperation(addOperationTable);
@@ -635,12 +739,13 @@ public class Menu {
     return false;
   }
 
-  private void checkingDate(Date date, JTextField textField, JLabel label) {
+  private Date checkingDate(JTextField textField, JLabel label) {
     try {
-      date = new SimpleDateFormat("yyyy-MM-dd").parse(textField.getText());
+      return new SimpleDateFormat("yyyy-MM-dd").parse(textField.getText());
     }
     catch(ParseException ex) {
       label.setText("Incorrect date");
+      return null;
     }
   }
 
@@ -673,5 +778,14 @@ public class Menu {
     }
 
     return false;
+  }
+
+  private void close(JFrame frame) {
+    frame.addWindowListener(new java.awt.event.WindowAdapter() {
+      @Override
+      public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+        loaderFrame.dispose();
+      }
+    });
   }
 }

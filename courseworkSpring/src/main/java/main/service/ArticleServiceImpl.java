@@ -39,6 +39,9 @@ public class ArticleServiceImpl implements ArticleService {
     if(!article.isPresent())
       throw new ArticleNotFoundException("Article not found");
 
+    List<Operation> operations = getCreditForCategory(id);
+
+    operationRepository.deleteAll(operations);
     articleRepository.delete(article.get());
   }
 

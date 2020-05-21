@@ -51,9 +51,10 @@ public class Authentication {
             if(model == null)
               return;
 
-            loaderFrame.dispose();
+            //loaderFrame.dispose();
+            loaderFrame.setVisible(false);
             frame.dispose();
-            Menu menu = new Menu(model, frame, gateway);
+            Menu menu = new Menu(model, loaderFrame, gateway);
             menu.menuImplementation();
           });
         }

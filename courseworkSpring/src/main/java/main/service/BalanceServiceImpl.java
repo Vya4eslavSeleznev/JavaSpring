@@ -1,9 +1,11 @@
 package main.service;
 
 import main.entity.Balance;
+import main.entity.Operation;
 import main.exception.BalanceNotFoundException;
 import main.model.FilterModel;
 import main.repository.BalanceRepository;
+import main.repository.OperationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +22,9 @@ public class BalanceServiceImpl implements BalanceService {
   @Autowired
   private BalanceRepository balanceRepository;
 
+  @Autowired
+  private OperationRepository operationRepository;
+
   @PersistenceContext
   private EntityManager entityManager;
 
@@ -35,6 +40,9 @@ public class BalanceServiceImpl implements BalanceService {
     if(!balance.isPresent())
       throw new BalanceNotFoundException("Balance not found");
 
+    List<Operation> operations = getOperationByBalanceId(id);
+
+    operationRepository.deleteAll(operations);
     balanceRepository.delete(balance.get());
   }
 
@@ -66,6 +74,20 @@ public class BalanceServiceImpl implements BalanceService {
 
       query.where(cb.and(predicates.toArray(new Predicate[predicates.size()])));
     }
+
+    return entityManager.createQuery(query).getResultList();
+  }
+
+  @Override
+  public List<Operation> getOperationByBalanceId(int id) {
+    CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+    CriteriaQuery<Operation> query = cb.createQuery(Operation.class);
+    Root<Operation> operation = query.from(Operation.class);
+    query.select(operation);
+
+    Path<Integer> balanceId = operation.get("balanceId");
+
+    query.where(cb.equal(balanceId, id));
 
     return entityManager.createQuery(query).getResultList();
   }

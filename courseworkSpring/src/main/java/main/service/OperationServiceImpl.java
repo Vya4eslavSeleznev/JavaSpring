@@ -42,15 +42,21 @@ public class OperationServiceImpl implements OperationService {
       throw new ArticleNotFoundException("Article not found");
     }
 
-    Optional<Balance> balance = balanceRepository.findById(operationModel.balanceId);
+    Optional<Balance> optionalBalance = balanceRepository.findById(operationModel.balanceId);
 
-    if(!balance.isPresent()) {
+    if(!optionalBalance.isPresent()) {
       throw new ArticleNotFoundException("Balance not found");
     }
 
-    Operation operation = new Operation(article.get(), balance.get(), operationModel.debit, operationModel.credit,
+    Balance balance = optionalBalance.get();
+
+    Operation operation = new Operation(article.get(), balance, operationModel.debit, operationModel.credit,
       operationModel.createDate);
 
+    balance.setDebit(balance.getDebit() + operation.getDebit());
+    balance.setCredit(balance.getCredit() + operation.getCredit());
+
+    balanceRepository.save(balance);
     operationRepository.save(operation);
   }
 
@@ -61,6 +67,18 @@ public class OperationServiceImpl implements OperationService {
     if(!operation.isPresent())
       throw new OperationNotFoundException("Operation not found");
 
+    Optional<Balance> optionalBalance = balanceRepository.findById(operation.get().getBalanceId());
+
+    if(!optionalBalance.isPresent()) {
+      throw new ArticleNotFoundException("Balance not found");
+    }
+
+    Balance balance = optionalBalance.get();
+
+    balance.setDebit(balance.getDebit() - operation.get().getDebit());
+    balance.setCredit(balance.getCredit() - operation.get().getCredit());
+
+    balanceRepository.save(balance);
     operationRepository.delete(operation.get());
   }
 

@@ -19,11 +19,11 @@ public class Balance {
   public Balance() {
   }
 
-  public Balance(Date createDate, double debit, double credit, double amount) {
+  public Balance(Date createDate, double debit, double credit) {
     this.createDate = createDate;
     this.debit = debit;
     this.credit = credit;
-    this.amount = amount;
+    this.updateAmount();
   }
 
   public int getId() {
@@ -48,6 +48,7 @@ public class Balance {
 
   public void setDebit(double debit) {
     this.debit = debit;
+    this.updateAmount();
   }
 
   public double getCredit() {
@@ -56,13 +57,14 @@ public class Balance {
 
   public void setCredit(double credit) {
     this.credit = credit;
+    this.updateAmount();
   }
 
   public double getAmount() {
     return amount;
   }
 
-  public void setAmount(double amount) {
-    this.amount = amount;
+  private void updateAmount() {
+    this.amount = this.debit - this.credit;
   }
 }
