@@ -2,18 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="88a6bfe1-1274-47ad-9876-9cb833b429ac" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../UI/src/main/java/coursework/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UI/src/main/java/coursework/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UI/target/classes/coursework/Menu$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../UI/target/classes/coursework/Menu$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UI/target/classes/coursework/Menu$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/../UI/target/classes/coursework/Menu$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UI/target/classes/coursework/Menu$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/../UI/target/classes/coursework/Menu$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UI/target/classes/coursework/Menu$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/../UI/target/classes/coursework/Menu$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UI/target/classes/coursework/Menu$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/../UI/target/classes/coursework/Menu$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UI/target/classes/coursework/Menu$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/../UI/target/classes/coursework/Menu$6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UI/target/classes/coursework/Menu$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/../UI/target/classes/coursework/Menu$7.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UI/target/classes/coursework/Menu$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/../UI/target/classes/coursework/Menu$8.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UI/target/classes/coursework/Menu$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/../UI/target/classes/coursework/Menu$9.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UI/target/classes/coursework/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/../UI/target/classes/coursework/Menu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

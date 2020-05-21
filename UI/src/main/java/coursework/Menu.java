@@ -526,6 +526,7 @@ public class Menu {
   private void selectArticleTabbedPane() {
     articleTabbedPane.addChangeListener(new ChangeListener() {
       public void stateChanged(ChangeEvent e) {
+        showAllArticle(addArticleTable);
         showAllArticle(deleteArticleTable);
         showAllArticle(showAllArticleTable);
       }
@@ -535,6 +536,7 @@ public class Menu {
   private void selectBalanceTabbedPane() {
     balanceTabbedPane.addChangeListener(new ChangeListener() {
       public void stateChanged(ChangeEvent e) {
+        showAllBalance(addBalanceTable);
         showAllBalance(deleteBalanceTable);
         showAllBalance(showAllBalanceTable);
       }
@@ -544,6 +546,7 @@ public class Menu {
   private void selectOperationTabbedPane() {
     operationTabbedPane.addChangeListener(new ChangeListener() {
       public void stateChanged(ChangeEvent e) {
+        showAllOperation(addOperationTable);
         showAllOperation(deleteOperationTable);
         showAllOperation(showAllOperationTable);
       }
