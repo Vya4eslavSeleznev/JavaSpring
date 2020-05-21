@@ -141,12 +141,19 @@ public class Menu {
     operationFilter();
   }
 
+  public TokenModel getTokenModel() {
+    return tokenModel;
+  }
+
   private void addArticle() {
     addArticleButton.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
         errorAddArticleLabel.setText("");
         Loader loader = new Loader(loaderFrame);
+
+        if(checkingForVoidsAndWhitespaces(addArticleTextField, errorAddArticleLabel, loaderFrame))
+          return;
 
         try {
           gateway.addArticle(addArticleTextField.getText(), tokenModel.getToken()).exceptionally(exception -> {
@@ -171,11 +178,16 @@ public class Menu {
       @Override
       public void actionPerformed(ActionEvent e) {
         errorDeleteArticleLabel.setText("");
-        String id = deleteArticleTextField.getText();
         Loader loader = new Loader(loaderFrame);
 
+        if(checkingForVoidsAndWhitespaces(deleteArticleTextField, errorDeleteArticleLabel, loaderFrame))
+          return;
+
+        //Если такого id нет, то setText
+
         try {
-          gateway.delete("http://localhost:8080/article/", id, tokenModel).exceptionally(exception -> {
+          gateway.delete("http://localhost:8080/article/", deleteArticleTextField.getText(),
+                          tokenModel).exceptionally(exception -> {
             loaderFrame.dispose();
             return null;
           }).thenAccept(model -> {
@@ -211,6 +223,9 @@ public class Menu {
       public void actionPerformed(ActionEvent e) {
         errorArticleFilterLabel.setText("");
 
+        if(checkingForVoidsAndWhitespaces(filterArticleTextField, errorArticleFilterLabel, loaderFrame))
+          return;
+
         try {
           gateway.getArticleFilter(filterArticleTextField.getText(), tokenModel).thenApply(listArticle -> {
             reloadTableOperation(filterArticleTable, getDefaultDataModelForOperation(), listArticle);
@@ -233,13 +248,19 @@ public class Menu {
       public void actionPerformed(ActionEvent e) {
         errorAddBalanceLabel.setText("");
         Date createDate = null;
+        Loader loader = new Loader(loaderFrame);
 
-        try {
-          createDate = new SimpleDateFormat("yyyy-MM-dd").parse(addBalanceDateTextField.getText());
+        if(checkingForVoidsAndWhitespaces(addBalanceDateTextField, errorAddBalanceLabel, loaderFrame) ||
+           checkingForVoidsAndWhitespaces(addBalanceDebitTextField, errorAddBalanceLabel, loaderFrame) ||
+           checkingForVoidsAndWhitespaces(addBalanceCreditTextField, errorAddBalanceLabel, loaderFrame)) {
+          addBalanceDateTextField.setText("");
+          addBalanceDebitTextField.setText("");
+          addBalanceCreditTextField.setText("");
+
+          return;
         }
-        catch(ParseException ex) {
-          errorAddBalanceLabel.setText("Incorrect parameters");
-        }
+
+        checkingDate(createDate, addBalanceDateTextField, errorAddBalanceLabel);
 
         double debit = 0;
         double credit = 0;
@@ -249,10 +270,8 @@ public class Menu {
           credit = Double.parseDouble(addBalanceCreditTextField.getText());
         }
         catch(NumberFormatException ex) {
-          errorAddBalanceLabel.setText("Incorrect parameters");
+          errorAddBalanceLabel.setText("Incorrect debit or credit");
         }
-
-        Loader loader = new Loader(loaderFrame);
 
         try {
           gateway.addBalance(createDate, debit, credit, tokenModel.getToken()).exceptionally(exception -> {
@@ -282,6 +301,11 @@ public class Menu {
         errorDeleteBalanceLabel.setText("");
         String id = deleteBalanceTextField.getText();
         Loader loader = new Loader(loaderFrame);
+
+        if(checkingForVoidsAndWhitespaces(deleteBalanceTextField, errorDeleteBalanceLabel, loaderFrame))
+          return;
+
+        //Если такого id нет, то setText
 
         try {
           gateway.delete("http://localhost:8080/balance/", id, tokenModel).exceptionally(exception -> {
@@ -319,6 +343,19 @@ public class Menu {
       @Override
       public void actionPerformed(ActionEvent e) {
         errorBalanceFilterLabel.setText("");
+        Date from = null;
+        Date to = null;
+
+        if(checkingForVoidsAndWhitespaces(filterBalanceFromTextField, errorBalanceFilterLabel, loaderFrame) ||
+           checkingForVoidsAndWhitespaces(filterBalanceToTextField, errorBalanceFilterLabel, loaderFrame)) {
+          filterBalanceFromTextField.setText("");
+          filterBalanceToTextField.setText("");
+
+          return;
+        }
+
+        checkingDate(from, filterBalanceFromTextField, errorBalanceFilterLabel);
+        checkingDate(to, filterBalanceToTextField, errorBalanceFilterLabel);
 
         try {
         gateway.getBalanceFilter(filterBalanceFromTextField.getText(),
@@ -345,12 +382,23 @@ public class Menu {
         errorAddOperationLabel.setText("");
         Date createDate = null;
 
-        try {
-          createDate = new SimpleDateFormat("yyyy-MM-dd").parse(addOperationDateTextField.getText());
+        Loader loader = new Loader(loaderFrame);
+
+        if(checkingForVoidsAndWhitespaces(addOperationDateTextField, errorAddOperationLabel, loaderFrame) ||
+          checkingForVoidsAndWhitespaces(addOperationDebitTextField, errorAddOperationLabel, loaderFrame) ||
+          checkingForVoidsAndWhitespaces(addOperationCreditTextField, errorAddOperationLabel, loaderFrame) ||
+          checkingForVoidsAndWhitespaces(addOperationArtIdTextField, errorAddOperationLabel, loaderFrame) ||
+          checkingForVoidsAndWhitespaces(addOperationBalIdTextField, errorAddOperationLabel, loaderFrame)) {
+          addOperationDateTextField.setText("");
+          addOperationDebitTextField.setText("");
+          addOperationCreditTextField.setText("");
+          addOperationArtIdTextField.setText("");
+          addOperationBalIdTextField.setText("");
+
+          return;
         }
-        catch(ParseException ex) {
-          errorAddOperationLabel.setText("Incorrect parameters");
-        }
+
+        checkingDate(createDate, addOperationDateTextField, errorAddOperationLabel);
 
         double debit = 0;
         double credit = 0;
@@ -367,8 +415,6 @@ public class Menu {
         catch(NumberFormatException ex) {
           errorAddOperationLabel.setText("Incorrect parameters");
         }
-
-        Loader loader = new Loader(loaderFrame);
 
         try {
           gateway.addOperation(articleId, debit, credit, createDate, balanceId, tokenModel.getToken()).exceptionally(
@@ -400,6 +446,11 @@ public class Menu {
         errorDeleteOperationLabel.setText("");
         String id = deleteOperationTextField.getText();
         Loader loader = new Loader(loaderFrame);
+
+        if(checkingForVoidsAndWhitespaces(deleteOperationTextField, errorDeleteOperationLabel, loaderFrame))
+          return;
+
+        //Если такого id нет, то setText
 
         try {
           gateway.delete("http://localhost:8080/operation/", id, tokenModel).exceptionally(exception -> {
@@ -437,6 +488,20 @@ public class Menu {
       @Override
       public void actionPerformed(ActionEvent e) {
         errorOperationFilterLabel.setText("");
+        Date from = null;
+        Date to = null;
+
+        if(checkingForVoidsAndWhitespaces(operationFilterDateFromTextField, errorOperationFilterLabel, loaderFrame) ||
+          checkingForVoidsAndWhitespaces(operationFilterDateToTextField, errorOperationFilterLabel, loaderFrame)) {
+          operationFilterDateFromTextField.setText("");
+          operationFilterDateToTextField.setText("");
+
+          return;
+        }
+
+        checkingDate(from, operationFilterDateFromTextField, errorOperationFilterLabel);
+        checkingDate(to, operationFilterDateToTextField, errorOperationFilterLabel);
+
 
         try {
           gateway.getOperationFilter(operationFilterDateFromTextField.getText(),
@@ -553,7 +618,24 @@ public class Menu {
     });
   }
 
-  public TokenModel getTokenModel() {
-    return tokenModel;
+  private boolean checkingForVoidsAndWhitespaces(JTextField textField, JLabel label, JFrame frame) {
+    if(textField.getText().equals("") || textField.getText().contains(" ")) {
+      label.setText("Text field is empty or contains whitespaces");
+      frame.dispose();
+      textField.setText("");
+
+      return true;
+    }
+
+    return false;
+  }
+
+  private void checkingDate(Date date, JTextField textField, JLabel label) {
+    try {
+      date = new SimpleDateFormat("yyyy-MM-dd").parse(textField.getText());
+    }
+    catch(ParseException ex) {
+      label.setText("Incorrect date");
+    }
   }
 }
