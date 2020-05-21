@@ -1,6 +1,8 @@
 package main.web;
 
 import main.entity.Operation;
+import main.exception.ArticleNotFoundException;
+import main.exception.BalanceNotFoundException;
 import main.exception.OperationNotFoundException;
 import main.model.FilterModel;
 import main.model.OperationCreateModel;
@@ -28,7 +30,15 @@ public class OperationController {
 
   @PostMapping()
   public void addOperation(@RequestBody OperationCreateModel operationModel) {
-    operationService.addOperation(operationModel);
+    try {
+      operationService.addOperation(operationModel);
+    }
+    catch(ArticleNotFoundException ex) {
+      throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Article not found");
+    }
+    catch(BalanceNotFoundException ex) {
+      throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Balance not found");
+    }
   }
 
   @DeleteMapping("{id}")

@@ -9,6 +9,7 @@ import main.model.FilterModel;
 import main.service.ArticleService;
 import main.service.OperationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -34,8 +35,13 @@ public class ArticleController {
 
   @PostMapping
   public void addArticle(@RequestBody ArticleCreateModel articleModel) {
-    Article article = new Article(articleModel.name);
-    articleService.addArticle(article);
+    try {
+      Article article = new Article(articleModel.name);
+      articleService.addArticle(article);
+    }
+    catch(DataIntegrityViolationException ex) {
+      throw new ResponseStatusException(HttpStatus.CONFLICT, "Article is not unique");
+    }
   }
 
   @DeleteMapping("{id}")

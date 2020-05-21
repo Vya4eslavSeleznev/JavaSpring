@@ -2,8 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="88a6bfe1-1274-47ad-9876-9cb833b429ac" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../UI/src/main/java/api/Gateway.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UI/src/main/java/api/Gateway.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../UI/src/main/java/coursework/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UI/src/main/java/coursework/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UI/target/classes/api/Gateway$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../UI/target/classes/api/Gateway$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UI/target/classes/api/Gateway$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/../UI/target/classes/api/Gateway$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UI/target/classes/api/Gateway$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/../UI/target/classes/api/Gateway$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UI/target/classes/api/Gateway$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/../UI/target/classes/api/Gateway$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UI/target/classes/api/Gateway$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/../UI/target/classes/api/Gateway$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UI/target/classes/api/Gateway$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/../UI/target/classes/api/Gateway$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UI/target/classes/api/Gateway.class" beforeDir="false" afterPath="$PROJECT_DIR$/../UI/target/classes/api/Gateway.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../UI/target/classes/coursework/Menu$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../UI/target/classes/coursework/Menu$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UI/target/classes/coursework/Menu$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/../UI/target/classes/coursework/Menu$10.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UI/target/classes/coursework/Menu$11.class" beforeDir="false" afterPath="$PROJECT_DIR$/../UI/target/classes/coursework/Menu$11.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UI/target/classes/coursework/Menu$12.class" beforeDir="false" afterPath="$PROJECT_DIR$/../UI/target/classes/coursework/Menu$12.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UI/target/classes/coursework/Menu$13.class" beforeDir="false" afterPath="$PROJECT_DIR$/../UI/target/classes/coursework/Menu$13.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../UI/target/classes/coursework/Menu$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/../UI/target/classes/coursework/Menu$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../UI/target/classes/coursework/Menu$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/../UI/target/classes/coursework/Menu$3.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../UI/target/classes/coursework/Menu$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/../UI/target/classes/coursework/Menu$4.class" afterDir="false" />
@@ -14,6 +26,10 @@
       <change beforePath="$PROJECT_DIR$/../UI/target/classes/coursework/Menu$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/../UI/target/classes/coursework/Menu$9.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../UI/target/classes/coursework/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/../UI/target/classes/coursework/Menu.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/service/ArticleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/service/ArticleServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/service/OperationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/service/OperationServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/web/ArticleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/web/ArticleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/web/OperationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/web/OperationController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,6 +123,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="566" y="272" width="403" height="287" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.824@0.0.1536.824" timestamp="1589480241232" />
+    <state x="547" y="243" key="#com.intellij.refactoring.move.moveInstanceMethod.MoveInstanceMethodDialog" timestamp="1590081737820">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="547" y="243" key="#com.intellij.refactoring.move.moveInstanceMethod.MoveInstanceMethodDialog/0.0.1536.824@0.0.1536.824" timestamp="1590081737820" />
     <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1589311933505">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -119,38 +139,38 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="933" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1590050437873" />
-    <state width="1493" height="252" key="GridCell.Tab.0.bottom" timestamp="1590011366025">
+    <state width="1493" height="244" key="GridCell.Tab.0.bottom" timestamp="1590083098220">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="252" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1590011366025" />
-    <state width="1493" height="252" key="GridCell.Tab.0.center" timestamp="1590011366024">
+    <state width="1493" height="244" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1590083098220" />
+    <state width="1493" height="244" key="GridCell.Tab.0.center" timestamp="1590083098219">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="252" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1590011366024" />
-    <state width="1493" height="252" key="GridCell.Tab.0.left" timestamp="1590011366024">
+    <state width="1493" height="244" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1590083098219" />
+    <state width="1493" height="244" key="GridCell.Tab.0.left" timestamp="1590083098219">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="252" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1590011366024" />
-    <state width="1493" height="252" key="GridCell.Tab.0.right" timestamp="1590011366025">
+    <state width="1493" height="244" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1590083098219" />
+    <state width="1493" height="244" key="GridCell.Tab.0.right" timestamp="1590083098219">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="252" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1590011366024" />
-    <state width="1493" height="252" key="GridCell.Tab.1.bottom" timestamp="1590011366026">
+    <state width="1493" height="244" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1590083098219" />
+    <state width="1493" height="252" key="GridCell.Tab.1.bottom" timestamp="1590082185795">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="252" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1590011366026" />
-    <state width="1493" height="252" key="GridCell.Tab.1.center" timestamp="1590011366025">
+    <state width="1493" height="252" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1590082185795" />
+    <state width="1493" height="252" key="GridCell.Tab.1.center" timestamp="1590082185795">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="252" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1590011366025" />
-    <state width="1493" height="252" key="GridCell.Tab.1.left" timestamp="1590011366025">
+    <state width="1493" height="252" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1590082185795" />
+    <state width="1493" height="252" key="GridCell.Tab.1.left" timestamp="1590082185795">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="252" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1590011366025" />
-    <state width="1493" height="252" key="GridCell.Tab.1.right" timestamp="1590011366026">
+    <state width="1493" height="252" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1590082185795" />
+    <state width="1493" height="252" key="GridCell.Tab.1.right" timestamp="1590082185795">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="252" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1590011366026" />
+    <state width="1493" height="252" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1590082185795" />
     <state x="435" y="90" key="Maven.ArtifactSearchDialog" timestamp="1588856667098">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -179,16 +199,5 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="814" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1589658258842" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/main/service/OperationServiceImpl.java</url>
-          <line>37</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

@@ -3,6 +3,8 @@ package api;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+import exception.NotFoundException;
+import exception.NotUniqueException;
 
 import java.lang.reflect.Type;
 import java.net.URI;
@@ -218,7 +220,15 @@ public class Gateway {
 
   private CompletableFuture<Void> handleRequestWithoutResponseBody(HttpRequest request) {
     return HttpClient.newHttpClient().sendAsync(request, HttpResponse.BodyHandlers.ofString()).thenAccept(response -> {
-      if(response.statusCode() != 200) {
+      if (response.statusCode() == 404) {
+        throw new NotFoundException("404");
+      }
+
+      if (response.statusCode() == 409) {
+        throw new NotUniqueException("409");
+      }
+
+      if(response.statusCode() != 200)  {
         throw new CompletionException(new AccessDeniedException("!=200"));
       }
     });

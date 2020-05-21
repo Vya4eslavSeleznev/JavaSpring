@@ -5,6 +5,7 @@ import main.entity.Operation;
 import main.exception.ArticleNotFoundException;
 import main.repository.ArticleRepository;
 import main.repository.OperationRepository;
+import org.postgresql.util.PSQLException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -3,6 +3,7 @@ package main.service;
 import main.entity.Article;
 import main.entity.Balance;
 import main.entity.Operation;
+import main.exception.ArticleNotFoundException;
 import main.exception.OperationNotFoundException;
 import main.model.FilterModel;
 import main.model.OperationCreateModel;
@@ -36,7 +37,16 @@ public class OperationServiceImpl implements OperationService {
 
   public void addOperation(OperationCreateModel operationModel) {
     Optional<Article> article = articleRepository.findById(operationModel.articleId);
+
+    if(!article.isPresent()) {
+      throw new ArticleNotFoundException("Article not found");
+    }
+
     Optional<Balance> balance = balanceRepository.findById(operationModel.balanceId);
+
+    if(!balance.isPresent()) {
+      throw new ArticleNotFoundException("Balance not found");
+    }
 
     Operation operation = new Operation(article.get(), balance.get(), operationModel.debit, operationModel.credit,
       operationModel.createDate);
