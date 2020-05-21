@@ -122,6 +122,12 @@ public class Menu {
   }
 
   public void menuImplementation() {
+    showAllArticle(addArticleTable);
+    selectMainTabbedPane();
+    selectArticleTabbedPane();
+    selectBalanceTabbedPane();
+    selectOperationTabbedPane();
+
     addArticle();
     deleteArticle();
     articleFilter();
@@ -139,8 +145,8 @@ public class Menu {
     addArticleButton.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
+        errorAddArticleLabel.setText("");
         Loader loader = new Loader(loaderFrame);
-        String name = addArticleTextField.getText();
 
         try {
           gateway.addArticle(addArticleTextField.getText(), tokenModel.getToken()).exceptionally(exception -> {
@@ -152,7 +158,7 @@ public class Menu {
           });
         }
         catch(URISyntaxException ex) {
-          ex.printStackTrace();
+          errorAddArticleLabel.setText("Incorrect parameters");
         }
 
         addArticleTextField.setText("");
@@ -178,7 +184,6 @@ public class Menu {
           });
         }
         catch(URISyntaxException ex) {
-          //ex.printStackTrace();
           errorDeleteArticleLabel.setText("Incorrect parameters");
         }
 
@@ -506,6 +511,43 @@ public class Menu {
     }
 
     table.setModel(model);
+  }
+
+  private void selectMainTabbedPane() {
+    mainTabbedPane.addChangeListener(new ChangeListener() {
+      public void stateChanged(ChangeEvent e) {
+        showAllArticle(addArticleTable);
+        showAllBalance(addBalanceTable);
+        showAllOperation(addOperationTable);
+      }
+    });
+  }
+
+  private void selectArticleTabbedPane() {
+    articleTabbedPane.addChangeListener(new ChangeListener() {
+      public void stateChanged(ChangeEvent e) {
+        showAllArticle(deleteArticleTable);
+        showAllArticle(showAllArticleTable);
+      }
+    });
+  }
+
+  private void selectBalanceTabbedPane() {
+    balanceTabbedPane.addChangeListener(new ChangeListener() {
+      public void stateChanged(ChangeEvent e) {
+        showAllBalance(deleteBalanceTable);
+        showAllBalance(showAllBalanceTable);
+      }
+    });
+  }
+
+  private void selectOperationTabbedPane() {
+    operationTabbedPane.addChangeListener(new ChangeListener() {
+      public void stateChanged(ChangeEvent e) {
+        showAllOperation(deleteOperationTable);
+        showAllOperation(showAllOperationTable);
+      }
+    });
   }
 
   public TokenModel getTokenModel() {
