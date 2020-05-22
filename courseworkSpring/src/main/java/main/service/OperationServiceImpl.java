@@ -36,13 +36,13 @@ public class OperationServiceImpl implements OperationService {
   private EntityManager entityManager;
 
   public void addOperation(OperationCreateModel operationModel) {
-    Optional<Article> article = articleRepository.findById(operationModel.articleId);
+    Optional<Article> article = articleRepository.findById(operationModel.getArticleId());
 
     if(!article.isPresent()) {
       throw new ArticleNotFoundException("Article not found");
     }
 
-    Optional<Balance> optionalBalance = balanceRepository.findById(operationModel.balanceId);
+    Optional<Balance> optionalBalance = balanceRepository.findById(operationModel.getBalanceId());
 
     if(!optionalBalance.isPresent()) {
       throw new ArticleNotFoundException("Balance not found");
@@ -50,8 +50,8 @@ public class OperationServiceImpl implements OperationService {
 
     Balance balance = optionalBalance.get();
 
-    Operation operation = new Operation(article.get(), balance, operationModel.debit, operationModel.credit,
-      operationModel.createDate);
+    Operation operation = new Operation(article.get(), balance, operationModel.getDebit(), operationModel.getCredit(),
+      operationModel.getCreateDate());
 
     balance.setDebit(balance.getDebit() + operation.getDebit());
     balance.setCredit(balance.getCredit() + operation.getCredit());

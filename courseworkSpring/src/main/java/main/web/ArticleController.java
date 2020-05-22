@@ -36,7 +36,7 @@ public class ArticleController {
   @PostMapping
   public void addArticle(@RequestBody ArticleCreateModel articleModel) {
     try {
-      Article article = new Article(articleModel.name);
+      Article article = new Article(articleModel.getName());
       articleService.addArticle(article);
     }
     catch(DataIntegrityViolationException ex) {
