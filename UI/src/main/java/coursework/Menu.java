@@ -194,8 +194,10 @@ public class Menu {
 
         Integer id = stringToInt(deleteArticleTextField, errorDeleteArticleLabel, loaderFrame);
 
-        if (id == null)
+        if (id == null) {
+          loaderFrame.setVisible(false);
           return;
+        }
 
         try {
           gateway.delete("http://localhost:8080/article/", id, tokenModel).exceptionally(
@@ -236,6 +238,7 @@ public class Menu {
     articleFilterButton.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
+        loaderFrame.setVisible(true);
         errorArticleFilterLabel.setText("");
 
         if(checkingForVoidsAndWhitespaces(filterArticleTextField, errorArticleFilterLabel, loaderFrame)) {
@@ -245,8 +248,10 @@ public class Menu {
 
         Integer id = stringToInt(filterArticleTextField, errorArticleFilterLabel, loaderFrame);
 
-        if (id == null)
+        if (id == null) {
+          loaderFrame.setVisible(false);
           return;
+        }
 
         try {
           gateway.getArticleFilter(id, tokenModel).thenApply(listArticle -> {
@@ -285,7 +290,7 @@ public class Menu {
         createDate = checkingDate(addBalanceDateTextField, errorAddBalanceLabel);
 
         if(createDate == null) {
-          errorAddBalanceLabel.setText("Incorrect date");
+          errorAddBalanceLabel.setText("Incorrect date");//============================================================================
           balanceFieldSetText();
           loaderFrame.setVisible(false);
           return;
@@ -344,8 +349,10 @@ public class Menu {
 
         Integer id = stringToInt(deleteBalanceTextField, errorDeleteBalanceLabel, loaderFrame);
 
-        if (id == null)
+        if (id == null) {
+          loaderFrame.setVisible(false);
           return;
+        }
 
         try {
           gateway.delete("http://localhost:8080/balance/", id, tokenModel).exceptionally(exception -> {
@@ -506,8 +513,10 @@ public class Menu {
 
         Integer id = stringToInt(deleteOperationTextField, errorDeleteOperationLabel, loaderFrame);
 
-        if (id == null)
+        if (id == null) {
+          loaderFrame.setVisible(false);
           return;
+        }
 
         try {
           gateway.delete("http://localhost:8080/operation/", id, tokenModel).exceptionally(exception -> {
