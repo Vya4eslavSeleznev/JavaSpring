@@ -12,49 +12,49 @@
 
 Главное меню, вкладка добавления article:
 
-![Loader](/Docs/addArticle.JPG)
+![addArticle](/Docs/addArticle.JPG)
 
 Вкладка удаления article:
 
-![Loader](/Docs/deleteArticle.JPG)
+![deleteArticle](/Docs/deleteArticle.JPG)
 
 Просмотр всех article:
 
-![Loader](/Docs/showAllArticle.JPG)
+![showAllArticle](/Docs/showAllArticle.JPG)
 
 Поиск article по id в таблице operation:
 
-![Loader](/Docs/articleFilter.JPG)
+![articleFilter](/Docs/articleFilter.JPG)
 
 Вкладка добавления balance:
 
-![Loader](/Docs/addBalance.JPG)
+![addBalance](/Docs/addBalance.JPG)
 
 Вкладка удаления balance:
 
-![Loader](/Docs/deleteBalance.JPG)
+![deleteBalance](/Docs/deleteBalance.JPG)
 
 Просмотр всех balance:
 
-![Loader](/Docs/showAllBalance.JPG)
+![showAllBalance](/Docs/showAllBalance.JPG)
 
 Фильтр в таблице balance по дате:
 
-![Loader](/Docs/balanceFilter.JPG)
+![balanceFilter](/Docs/balanceFilter.JPG)
 
 Вкладка добавления operation:
 
-![Loader](/Docs/addOperation.JPG)
+![addOperation](/Docs/addOperation.JPG)
 
 Вкладка удаления operation:
 
-![Loader](/Docs/deleteOperation.JPG)
+![deleteOperation](/Docs/deleteOperation.JPG)
 
 Просмотр всех operation:
 
-![Loader](/Docs/showAllOperation.JPG)
+![showAllOperation](/Docs/showAllOperation.JPG)
 
 Фильтр в таблице operation по дате:
 
-![Loader](/Docs/operationFilter.JPG)
+![operationFilter](/Docs/operationFilter.JPG)
 
