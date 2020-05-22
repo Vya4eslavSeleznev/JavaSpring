@@ -6,55 +6,55 @@
 
 Запуск программы:
 
-![Authentication](/Docs/Authentication.jpg)
+![Authentication](/Docs/Authentication.JPG)
 
 ![Loader](/Docs/Loader.jpeg)
 
 Главное меню, вкладка добавления article:
 
-![Loader](/Docs/addArticle.jpg)
+![Loader](/Docs/addArticle.JPG)
 
 Вкладка удаления article:
 
-![Loader](/Docs/deleteArticle.jpg)
+![Loader](/Docs/deleteArticle.JPG)
 
 Просмотр всех article:
 
-![Loader](/Docs/showAllArticle.jpg)
+![Loader](/Docs/showAllArticle.JPG)
 
 Поиск article по id в таблице operation:
 
-![Loader](/Docs/articleFilter.jpg)
+![Loader](/Docs/articleFilter.JPG)
 
 Вкладка добавления balance:
 
-![Loader](/Docs/addBalance.jpg)
+![Loader](/Docs/addBalance.JPG)
 
 Вкладка удаления balance:
 
-![Loader](/Docs/deleteBalance.jpg)
+![Loader](/Docs/deleteBalance.JPG)
 
 Просмотр всех balance:
 
-![Loader](/Docs/showAllBalance.jpg)
+![Loader](/Docs/showAllBalance.JPG)
 
 Фильтр в таблице balance по дате:
 
-![Loader](/Docs/balanceFilter.jpg)
+![Loader](/Docs/balanceFilter.JPG)
 
 Вкладка добавления operation:
 
-![Loader](/Docs/addOperation.jpg)
+![Loader](/Docs/addOperation.JPG)
 
 Вкладка удаления operation:
 
-![Loader](/Docs/deleteOperation.jpg)
+![Loader](/Docs/deleteOperation.JPG)
 
 Просмотр всех operation:
 
-![Loader](/Docs/showAllOperation.jpg)
+![Loader](/Docs/showAllOperation.JPG)
 
 Фильтр в таблице operation по дате:
 
-![Loader](/Docs/operationFilter.jpg)
+![Loader](/Docs/operationFilter.JPG)
 
