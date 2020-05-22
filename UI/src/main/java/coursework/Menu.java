@@ -15,7 +15,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Optional;
 
 public class Menu {
   private JPanel rootPanel;
@@ -416,7 +415,7 @@ public class Menu {
         }
 
         try {
-          gateway.getBalanceFilter(filterBalanceFromTextField.getText(), filterBalanceToTextField.getText(),
+          gateway.getBalanceFilter(from, to,
             tokenModel).thenApply(listArticle -> {
             reloadTableBalance(filterBalanceTable, getDefaultDataModelForBalance(), listArticle);
             loaderFrame.setVisible(false);
@@ -587,8 +586,8 @@ public class Menu {
         }
 
         try {
-          gateway.getOperationFilter(operationFilterDateFromTextField.getText(),
-            operationFilterDateToTextField.getText(), tokenModel).thenApply(listArticle -> {
+          gateway.getOperationFilter(from,
+            to, tokenModel).thenApply(listArticle -> {
             reloadTableOperation(operationFilterTable, getDefaultDataModelForOperation(), listArticle);
             loaderFrame.setVisible(false);
             return listArticle;

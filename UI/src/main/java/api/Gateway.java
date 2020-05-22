@@ -13,6 +13,7 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.file.AccessDeniedException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.concurrent.CompletableFuture;
@@ -144,10 +145,12 @@ public class Gateway {
     }
   }
 
-  public CompletableFuture<ArrayList<BalanceModelGet>> getBalanceFilter(String from, String to,
+  public CompletableFuture<ArrayList<BalanceModelGet>> getBalanceFilter(Date from, Date to,
                                                                           TokenModel tokenModel) throws URISyntaxException {
+    SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+
     try {
-      return sendGet(new URI("http://localhost:8080/balance?from=" + from + "&to=" + to), tokenModel.getToken())
+      return sendGet(new URI("http://localhost:8080/balance?from=" + format.format(from) + "&to=" + format.format(to)), tokenModel.getToken())
         .thenApply(response -> {
           Gson gson = new Gson();
           Type listType = new TypeToken<ArrayList<BalanceModelGet>>(){}.getType();
@@ -160,10 +163,12 @@ public class Gateway {
     }
   }
 
-  public CompletableFuture<ArrayList<OperationModelGet>> getOperationFilter(String from, String to,
+  public CompletableFuture<ArrayList<OperationModelGet>> getOperationFilter(Date from, Date to,
                                                                           TokenModel tokenModel) throws URISyntaxException {
+    SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+
     try {
-      return sendGet(new URI("http://localhost:8080/operation?from=" + from + "&to=" + to), tokenModel.getToken())
+      return sendGet(new URI("http://localhost:8080/operation?from=" + format.format(from) + "&to=" + format.format(to)), tokenModel.getToken())
         .thenApply(response -> {
           Gson gson = new Gson();
           Type listType = new TypeToken<ArrayList<OperationModelGet>>(){}.getType();
