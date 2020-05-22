@@ -8,7 +8,7 @@
 
 ![Authentication](/Docs/Authentication.JPG)
 
-![Loader](/Docs/Loader.jpeg)
+![Loader](/Docs/Loader.JPG)
 
 Главное меню, вкладка добавления article:
 
