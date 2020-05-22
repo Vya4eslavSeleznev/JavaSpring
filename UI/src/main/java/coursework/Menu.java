@@ -290,7 +290,7 @@ public class Menu {
         createDate = checkingDate(addBalanceDateTextField, errorAddBalanceLabel);
 
         if(createDate == null) {
-          errorAddBalanceLabel.setText("Incorrect date");//============================================================================
+          errorAddBalanceLabel.setText("Incorrect date");
           balanceFieldSetText();
           loaderFrame.setVisible(false);
           return;
@@ -452,6 +452,13 @@ public class Menu {
         }
 
         Date createDate = checkingDate(addOperationDateTextField, errorAddOperationLabel);
+
+        if(createDate == null) {
+          errorAddOperationLabel.setText("Incorrect date");
+          operationFieldSetText();
+          loaderFrame.setVisible(false);
+          return;
+        }
 
         double debit = 0;
         double credit = 0;
