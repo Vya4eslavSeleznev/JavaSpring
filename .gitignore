@@ -72,3 +72,4 @@ fabric.properties
 courseworkSpring/.idea/workspace.xml
 *.class
 courseworkSpring/.idea/
+courseworkSpring/target/classes/META-INF/
