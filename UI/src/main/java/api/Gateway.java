@@ -74,9 +74,9 @@ public class Gateway {
     }
   }
 
-  public CompletableFuture<Void> delete(String uri, String id, TokenModel tokenModel) throws URISyntaxException {
+  public CompletableFuture<Void> delete(String uri, int id, TokenModel tokenModel) throws URISyntaxException {
     try {
-      return sendDelete(new URI(uri + id), tokenModel.getToken());
+      return sendDelete(new URI(uri + String.valueOf(id)), tokenModel.getToken());
     }
     catch(Exception e) {
       throw new URISyntaxException("", "");
@@ -128,10 +128,10 @@ public class Gateway {
     }
   }
 
-  public CompletableFuture<ArrayList<OperationModelGet>> getArticleFilter(String id,
+  public CompletableFuture<ArrayList<OperationModelGet>> getArticleFilter(int id,
                                                                           TokenModel tokenModel) throws URISyntaxException {
     try {
-      return sendGet(new URI("http://localhost:8080/article/" + id), tokenModel.getToken())
+      return sendGet(new URI("http://localhost:8080/article/" + String.valueOf(id)), tokenModel.getToken())
         .thenApply(response -> {
           Gson gson = new Gson();
           Type listType = new TypeToken<ArrayList<OperationModelGet>>(){}.getType();

@@ -11,13 +11,13 @@
       "name": "jwt.secret-key",
       "type": "java.lang.String",
       "sourceType": "main.security.jwt.JwtProperties",
-      "defaultValue": "verySecretKey"
+      "defaultValue": "sdlkfjgsdhfgahsdfnlgsdkgfhowrthgsghlskdjfhg87345735"
     },
     {
       "name": "jwt.validity-in-ms",
       "type": "java.lang.Long",
       "sourceType": "main.security.jwt.JwtProperties",
-      "defaultValue": 180000
+      "defaultValue": 0
     }
   ],
   "hints": []
