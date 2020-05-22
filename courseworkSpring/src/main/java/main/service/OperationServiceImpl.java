@@ -98,7 +98,7 @@ public class OperationServiceImpl implements OperationService {
     if(filter.hasFrom() || filter.hasTo()) {
       Path<Date> operationDate = operation.get("createDate");
 
-      ArrayList<Predicate> predicates = new ArrayList<Predicate>();
+      ArrayList<Predicate> predicates = new ArrayList<>();
 
       if(filter.hasFrom()) {
         predicates.add(cb.greaterThan(operationDate, filter.getFrom()));

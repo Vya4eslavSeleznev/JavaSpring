@@ -62,7 +62,7 @@ public class BalanceServiceImpl implements BalanceService {
     if(filter.hasFrom() || filter.hasTo()) {
       Path<Date> balanceDate = balance.get("createDate");
 
-      ArrayList<Predicate> predicates = new ArrayList<Predicate>();
+      ArrayList<Predicate> predicates = new ArrayList<>();
 
       if(filter.hasFrom()) {
         predicates.add(cb.greaterThan(balanceDate, filter.getFrom()));
