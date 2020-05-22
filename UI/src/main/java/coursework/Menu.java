@@ -222,7 +222,7 @@ public class Menu {
       });
     }
     catch(URISyntaxException ex) {
-      ex.printStackTrace();
+      //ex.printStackTrace();
       loaderFrame.setVisible(false);
     }
   }
@@ -360,7 +360,7 @@ public class Menu {
       });
     }
     catch(URISyntaxException ex) {
-      ex.printStackTrace();
+      //ex.printStackTrace();
       loaderFrame.setVisible(false);
     }
   }
@@ -522,7 +522,7 @@ public class Menu {
     }
     catch(URISyntaxException ex) {
       loaderFrame.setVisible(false);
-      ex.printStackTrace();
+      //ex.printStackTrace();
     }
   }
 
@@ -632,9 +632,15 @@ public class Menu {
   private void selectMainTabbedPane() {
     mainTabbedPane.addChangeListener(new ChangeListener() {
       public void stateChanged(ChangeEvent e) {
-        showAllArticle(addArticleTable);
-        showAllBalance(addBalanceTable);
-        showAllOperation(addOperationTable);
+        if(mainTabbedPane.getSelectedIndex() == 0) {
+          showAllArticle(addArticleTable);
+        }
+        else if(mainTabbedPane.getSelectedIndex() == 1) {
+          showAllBalance(addBalanceTable);
+        }
+        else if(mainTabbedPane.getSelectedIndex() == 2) {
+          showAllOperation(addOperationTable);
+        }
       }
     });
   }
@@ -642,9 +648,13 @@ public class Menu {
   private void selectArticleTabbedPane() {
     articleTabbedPane.addChangeListener(new ChangeListener() {
       public void stateChanged(ChangeEvent e) {
-        showAllArticle(addArticleTable);
-        showAllArticle(deleteArticleTable);
-        showAllArticle(showAllArticleTable);
+        if (articleTabbedPane.getSelectedIndex() == 0) {
+          showAllArticle(addArticleTable);
+        } else if (articleTabbedPane.getSelectedIndex() == 1) {
+          showAllArticle(deleteArticleTable);
+        } else if (articleTabbedPane.getSelectedIndex() == 2) {
+          showAllArticle(showAllArticleTable);
+        }
       }
     });
   }
@@ -652,9 +662,13 @@ public class Menu {
   private void selectBalanceTabbedPane() {
     balanceTabbedPane.addChangeListener(new ChangeListener() {
       public void stateChanged(ChangeEvent e) {
-        showAllBalance(addBalanceTable);
-        showAllBalance(deleteBalanceTable);
-        showAllBalance(showAllBalanceTable);
+        if (balanceTabbedPane.getSelectedIndex() == 0) {
+          showAllBalance(addBalanceTable);
+        } else if (balanceTabbedPane.getSelectedIndex() == 1) {
+          showAllBalance(deleteBalanceTable);
+        } else if (balanceTabbedPane.getSelectedIndex() == 2) {
+          showAllBalance(showAllBalanceTable);
+        }
       }
     });
   }
@@ -662,9 +676,13 @@ public class Menu {
   private void selectOperationTabbedPane() {
     operationTabbedPane.addChangeListener(new ChangeListener() {
       public void stateChanged(ChangeEvent e) {
-        showAllOperation(addOperationTable);
-        showAllOperation(deleteOperationTable);
-        showAllOperation(showAllOperationTable);
+        if (operationTabbedPane.getSelectedIndex() == 0) {
+          showAllOperation(addOperationTable);
+        } else if (operationTabbedPane.getSelectedIndex() == 1) {
+          showAllOperation(deleteOperationTable);
+        } else if (operationTabbedPane.getSelectedIndex() == 2) {
+          showAllOperation(showAllOperationTable);
+        }
       }
     });
   }

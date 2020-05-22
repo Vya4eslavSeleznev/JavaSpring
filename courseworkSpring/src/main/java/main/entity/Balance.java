@@ -9,11 +9,16 @@ public class Balance {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
 
-  @Column(name = "create_date")
+  @Column(nullable = false, name = "create_date")
   private Date createDate;
 
+  @Column(nullable = false)
   private double debit;
+
+  @Column(nullable = false)
   private double credit;
+
+  @Column(nullable = false)
   private double amount;
 
   public Balance() {

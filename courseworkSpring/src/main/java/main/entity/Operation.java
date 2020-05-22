@@ -15,14 +15,19 @@ public class Operation {
   @ManyToOne
   private Article article;
 
-  @Column(name = "article_id", insertable = false, updatable = false)
+  @Column(nullable = false, name = "article_id", insertable = false, updatable = false)
   private int articleId;
 
+  @Column(nullable = false)
   private double debit;
+
+  @Column(nullable = false)
   private double credit;
+
+  @Column(nullable = false)
   private Date createDate;
 
-  @Column(name = "balance_id", insertable = false, updatable = false)
+  @Column(nullable = false, name = "balance_id", insertable = false, updatable = false)
   private int balanceId;
 
   public Operation() {

@@ -1,15 +1,11 @@
 package main;
 
-import main.entity.User;
 import main.repository.OperationRepository;
 import main.repository.UserRepository;
-import org.postgresql.util.PSQLException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
-
-import java.util.Collections;
 
 @Component
 public class TestDataInit implements CommandLineRunner {

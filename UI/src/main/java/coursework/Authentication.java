@@ -33,25 +33,25 @@ public class Authentication {
   private void authenticationImplementation(JFrame frame) {
     JFrame loaderFrame = new JFrame();
     errorLabel.setText("");
+    Loader loader = new Loader(loaderFrame);
+    loaderFrame.setVisible(false);
 
     signInButton.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
+        loaderFrame.setVisible(true);
         String username = userNameTextField.getText();
         String password = String.valueOf(passwordField.getPassword());
 
-        Loader loader = new Loader(loaderFrame);
-
         try {
           gateway.login(username, password).exceptionally(exception -> {
-            loaderFrame.dispose();
+            loaderFrame.setVisible(false);
             errorLabel.setText("Incorrect parameters");
             return null;
           }).thenAccept(model -> {
             if(model == null)
               return;
 
-            //loaderFrame.dispose();
             loaderFrame.setVisible(false);
             frame.dispose();
             Menu menu = new Menu(model, loaderFrame, gateway);
@@ -59,7 +59,8 @@ public class Authentication {
           });
         }
         catch(URISyntaxException ex) {
-          ex.printStackTrace();
+          loaderFrame.setVisible(false);
+          //ex.printStackTrace();
         }
       }
     });

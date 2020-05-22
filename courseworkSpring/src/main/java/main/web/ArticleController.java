@@ -1,11 +1,9 @@
 package main.web;
 
 import main.entity.Article;
-import main.entity.Balance;
 import main.entity.Operation;
 import main.exception.ArticleNotFoundException;
 import main.model.ArticleCreateModel;
-import main.model.FilterModel;
 import main.service.ArticleService;
 import main.service.OperationService;
 import org.springframework.beans.factory.annotation.Autowired;

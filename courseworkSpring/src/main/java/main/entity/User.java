@@ -20,6 +20,7 @@ public class User implements UserDetails {
   @Column(nullable = false, unique = true)
   private String userName;
 
+  @Column(nullable = false)
   private String password;
 
   @ElementCollection(fetch = FetchType.EAGER)
