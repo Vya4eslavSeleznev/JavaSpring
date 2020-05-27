@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>main.entity</OriginalElement>
+  <nodes>
+    <node x="824.0" y="676.0">main.web.BalanceController</node>
+    <node x="245.0" y="1466.0">main.repository.ArticleRepository</node>
+    <node x="943.0" y="1369.0">main.exception.BalanceNotFoundException</node>
+    <node x="0.0" y="1270.0">main.web.AuthController</node>
+    <node x="311.0" y="1050.0">main.model.ArticleCreateModel</node>
+    <node x="237.0" y="676.0">main.web.OperationController</node>
+    <node x="780.0" y="1171.0">main.SpringApplicationWithPostgreSQL</node>
+    <node x="0.0" y="192.0">main.service.BalanceServiceImpl</node>
+    <node x="0.0" y="0.0">main.service.BalanceService</node>
+    <node x="1121.0" y="1171.0">main.repository.UserRepository</node>
+    <node x="574.0" y="170.0">main.service.OperationServiceImpl</node>
+    <node x="0.0" y="885.0">main.security.jwt.JwtTokenProvider</node>
+    <node x="253.0" y="379.0">main.entity.Balance</node>
+    <node x="548.0" y="1050.0">main.security.jwt.JwtAuthEntryPoint</node>
+    <node x="474.0" y="1466.0">main.repository.BalanceRepository</node>
+    <node x="574.0" y="0.0">main.service.OperationService</node>
+    <node x="872.0" y="379.0">main.web.ArticleController</node>
+    <node x="788.0" y="1270.0">main.exception.InvalidUserNameOrPasswordException</node>
+    <node x="0.0" y="1050.0">main.service.CustomUserDetailsService</node>
+    <node x="311.0" y="885.0">main.security.jwt.JwtProperties</node>
+    <node x="658.0" y="1369.0">main.exception.ArticleNotFoundException</node>
+    <node x="399.0" y="1171.0">main.SpringSecurityConfig</node>
+    <node x="349.0" y="0.0">main.entity.Operation</node>
+    <node x="543.0" y="885.0">main.web.AuthRequest</node>
+    <node x="947.0" y="170.0">main.service.ArticleServiceImpl</node>
+    <node x="0.0" y="1369.0">main.exception.InvalidJwtAuthenticationException</node>
+    <node x="285.0" y="1270.0">main.security.jwt.JwtSecurityConfigurer</node>
+    <node x="478.0" y="379.0">main.entity.User</node>
+    <node x="0.0" y="676.0">main.model.BalanceCreateModel</node>
+    <node x="0.0" y="1171.0">main.security.jwt.JwtFilter</node>
+    <node x="947.0" y="0.0">main.service.ArticleService</node>
+    <node x="0.0" y="1466.0">main.repository.OperationRepository</node>
+    <node x="772.0" y="885.0">main.entity.Article</node>
+    <node x="0.0" y="379.0">main.model.OperationCreateModel</node>
+    <node x="978.0" y="885.0">main.model.FilterModel</node>
+    <node x="546.0" y="1270.0">main.JpaConfig</node>
+    <node x="357.0" y="1369.0">main.exception.OperationNotFoundException</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="main.service.ArticleServiceImpl" target="main.service.ArticleService">
+      <point x="0.0" y="-60.0" />
+      <point x="0.0" y="60.0" />
+    </edge>
+    <edge source="main.service.BalanceServiceImpl" target="main.service.BalanceService">
+      <point x="0.0" y="-71.0" />
+      <point x="0.0" y="71.0" />
+    </edge>
+    <edge source="main.service.OperationServiceImpl" target="main.service.OperationService">
+      <point x="0.0" y="-60.0" />
+      <point x="0.0" y="60.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.5565669700910273" x="704.5" y="759.0" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>public</VISIBILITY>
+</Diagram>
+
